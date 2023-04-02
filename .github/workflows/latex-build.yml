@@ -12,6 +12,10 @@ jobs:
     needs: prepare-env
     runs-on: ubuntu-latest
     steps:
+      - run: sudo apt-get install texlive-base
+      - run: sudo apt-get install texlive-latex-extra
+      - run: sudo apt-get install texlive-fonts-recommended
+      - run: sudo apt-get install texlive-lang-polish
       - uses: actions/checkout@v2
       - name: Build LaTeX document
         run: pdflatex -interaction=nonstopmode -halt-on-error -file-line-error szablon.tex
