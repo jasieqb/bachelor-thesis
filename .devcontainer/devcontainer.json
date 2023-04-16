@@ -23,5 +23,5 @@
         // 	"password": "vscode"
         // }
     },
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y texlive-base texlive-lang-polish texlive-extra-utils texlive-latex-recommended chktex latexmk"
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y texlive-base texlive-lang-polish texlive-extra-utils texlive-latex-recommended chktex latexmk texlive-bibtex-extra biber"
 }

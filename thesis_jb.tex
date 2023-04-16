@@ -1,8 +1,18 @@
 \documentclass[a4paper,12pt]{book} % nie: report!
+\usepackage{url}
+% \usepackage{hyperref}
+
 
 
 \usepackage[T1,plmath]{polski} % lepiej to zamiast babel!
 \usepackage[utf8]{inputenc} % w razie kłopotów spróbować: \usepackage[utf8x]{inputenc}
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{refs.bib} % plik z bibliografią
 \usepackage{fancyhdr} % nagłówki i stopki
 \usepackage{indentfirst} % WAŻNE, MA BYĆ!
 \usepackage[pdftex]{graphicx} % to do wstawiania rysunków
@@ -61,199 +71,22 @@
 
 
 \begin{document}
-\begin{titlepage}
-    ~
 
-    \begin{tabular}{c@{\hspace{21mm}}|@{\hspace{5mm}}l}
-        \vspace{-20mm} &                                                                                   \\
-        \multicolumn{2}{l}{\hspace{-12.5mm} \includegraphics[width=8cm]{LogoUMCS.jpg}}                     \\
-        \multicolumn{2}{@{\hspace{20mm}}l}{\vspace{-4mm}}                                                  \\
-        \multicolumn{2}{@{\hspace{28mm}}l}{\Large \sf UNIWERSYTET MARII
-        CURIE-SKŁODOWSKIEJ}                                                                                \\
-        \multicolumn{2}{@{\hspace{28mm}}l}{\vspace{-4mm}}                                                  \\
-        \multicolumn{2}{@{\hspace{28mm}}l}{\Large \sf W LUBLINIE}                                          \\
-        \multicolumn{2}{@{\hspace{28mm}}l}{\vspace{-4mm}}                                                  \\
-        \multicolumn{2}{@{\hspace{28mm}}l}{\Large \sf Wydział Matematyki, Fizyki i
-        Informatyki}                                                                                       \\
-        \multicolumn{2}{@{\hspace{28mm}}l}{\vspace{21mm}}                                                  \\
-                       & {\sf Kierunek: \textbf{informatyka} }                                             \\
-        %& {\sf Specjalność: \textbf{informatyczna}} \\ % wpisujemy tylko jeśli jest!!!
-                       &                                                                                   \\\\\\
-                       & {\sf \large \bfseries Jan Bylina}                                                 \\
-                       & {\sf nr albumu: 303827}                                                           \\
-                       &                                                                                   \\\\\\
-                       & \Large \sf \bfseries Projekt oraz implementacja systemu                           \\
-                       & \Large \sf \bfseries gromadzenia rozproszonych danych                             \\
-                       & \Large \sf \bfseries z wykorzystaniem technologii LoRa                            \\\\[-10pt]
-                       & {\large \sf Design and implementation of the distributed data collection system } \\
-                       & {\large \sf using LoRa technology}                                                \\
-                       &                                                                                   \\
-                       &                                                                                   \\
-                       &                                                                                   \\
-                       & {\sf Praca licencjacka}                                                           \\
-                       & \vspace{-7mm}                                                                     \\
-                       & {\sf napisana w Katedrze Oprogramowania Systemów Informatycznych}                 \\
-                       & {\sf Instytutu Informatyki UMCS}                                                  \\
-                       & \vspace{-7mm}                                                                     \\
-                       & {\sf pod kierunkiem \bfseries dr hab. Przemysława Stpiczyńskiego}                 \\
-        \multicolumn{2}{@{\hspace{28mm}}l}{\vspace{15mm}}                                                  \\
-        \multicolumn{2}{@{\hspace{28mm}}l}{\textbf{\textsf{Lublin 2023}}}
-    \end{tabular}
-\end{titlepage}
+\include{src/start.tex}
+\include{src/wstep.tex}
 
+\include{src/tutorial.tex}
 
+\include{src/urzodzenia-technologie-protokoly.tex}
 
+\include{src/istniejace-rozwiazania.tex}
 
-\sloppy
+\include{src/zalozenia-implementacja.tex}
 
+\include{src/wdrozenie-testy.tex}
 
+\include{src/wnioski.tex}
 
-\thispagestyle{empty}
-
-
-\newpage{}
-
-\thispagestyle{empty}
-
-\newpage{}
-
-
-
-\tableofcontents{}
-
-\chapter*{Wstęp} % z gwiazdką, więc bez numerka...
-\addcontentsline{toc}{chapter}{Wstęp} % ...ale w spisie treści ma być
-
-Tu treść wstępu
-WSTĘP
-WSTEP
-------
-
-\chapter{Rozdział — tutorial}
-
-\section{Sekcja A}
-
-W tabeli~\ref{tab:przyk} widzimy przykład tabeli z~nagłówkiem i~odnośnikiem. Tabele tworzymy z~nagłówkiem na górze oraz opcją \texttt{[t]}.
-Natomiast na rysunku~\ref{rys:przyk} --- widzimy przykład rysunku z nagłówkiem i~odnośnikiem.
-Rysunki tworzymy z nagłówkiem pod spodem oraz opcją \texttt{[b]}.
-Rysunki powinny być w formacie PDF; jeśli to niemożliwe, to PNG (w wysokiej rozdzielczości); a~ostatecznie JPG (jak tu). Jeśli chcemy sterować rozmiarem, to zwykle najwygodniej użyć \texttt{width=...}
-Ponadto możemy odwoływać się do bibliografii~\cite{bib:a, bib:b}.
-
-Jeśli chodzi o wzory, możemy złożyć je na kilka sposobów, w zależności od potrzeb --- w tekście: $e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n$, wyniesiony do osbnej linii
-(warto zwrócić uwagę, że ten i~kolejny są złożone nieco inaczej niż pierwszy):
-\[e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n,\] a także wyniesiony z numerem:
-\begin{equation}
-    e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n.
-    \label{wzor:e}
-\end{equation}
-Do tego oostatniego możemy się odwołać:~\eqref{wzor:e}.
-
-No i oczywiście listingi --- listing~\ref{lst:przyk} pokazuje, jak zrobić to w~miarę poprawnie\ldots{}
-
-\begin{table}[t]
-    \begin{center}
-        \caption{Przykładowa tabela}\label{tab:przyk}
-        \begin{tabular}{l|c|r}
-            slkdjfslj  & sdkskd               & s;lkdsdk          \\
-            \hline
-            slkjd      & skljdsldj            & skljdsjdsldj      \\
-            sljkdslkjd & woieupowiepoweiwiewp & weoiw eppowie wpo \\
-        \end{tabular}
-    \end{center}
-\end{table}
-
-\begin{figure}[b]
-    \begin{center}
-        \includegraphics[width=3cm]{LogoUMCS}
-    \end{center}
-    \caption{Przykładowy rysunek}\label{rys:przyk}
-\end{figure}
-
-
-\begin{lstfloat}[b]
-    \lstset{language=C++}
-    \begin{lstlisting}[frame=single]
-tab[0:n] = dem[nRows][nCols]; //?
-#pragma acc data copy(tab [0:n], slope [0:n])
-\end{lstlisting}
-    \caption{Jakieś dwie linijki w~C++ (z~OpenACC)}\label{lst:przyk}
-\end{lstfloat}
-\
-sekcja 232323
-\
-
-\section{Sekcja B}
-
-sekcja BB
-
-\chapter{Wykorzystane narzędzia, technologie i protokoły}
-
-\section{Urządzenia}
-\subsection{STM32}
----
-\subsection{ESP32}
----
-\subsection{Rasberry Pi Pico}
----
-
-\section{Języki programowania i technologie}
-\subsection{\texttt{C++} for Arduio}
----
-\subsection{\texttt{C} for STM32}
----
-\subsection{\texttt{MicroPython} for Rasberry Pi Pico}
----
-\subsection{\texttt{Python} for MQTT}
-
-\section{Protokoły komunikacyjne}
----
-\subsection{\texttt{MQTT}}
----
-\subsection{\texttt{LoRa}}
----
-\subsection{\texttt{HTTP}}
----
-\section{Bazy danych i pozostałe technologie}
-\subsection{InfluxDB 2}
----
-\subsection{Docker}
----
-\subsection{PlatformIO}
----
-\chapter{Istniejące rozwiązania}
----
-\section{LoRaWAN}
----
-\subsection{The Things Network ?}
----
-\subsection{ChirpStack ?}
----
-\subsection{Loriot ?}
----
-\section{Artykuły}
----
-\section{Wpisy w sieci i blogach}
-
-\chapter{Założenie i Implementacja}
-\chapter{Wdrożenie i testy}
-\chapter{Wnioski i perspektywy rozwoju}
-
-
-
-\listof{lstfloat}{Spis listingów} % jeśli są listingi
-\addcontentsline{toc}{chapter}{Spis listingów}
-
-\listoftables{} % jeśli są tabele
-\addcontentsline{toc}{chapter}{Spis tabel}
-
-\listoffigures{} % jeśli są rysunki
-\addcontentsline{toc}{chapter}{Spis rysunków}
-
-\begin{thebibliography}{99}
-    \addcontentsline{toc}{chapter}{Bibliografia} % też ręczne dodanie do spisu treści, jak Wstęp
-    \bibitem{bib:a} aaaaaaaa
-    \bibitem{bib:b} bbbbbbbb
-\end{thebibliography}
-
+\include{src/end.tex}
 
 \end{document}
