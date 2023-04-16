@@ -1,38 +1,48 @@
 
-\chapter{Wykorzystane narzędzia, technologie i protokoły}
+\chapter{Wykorzystane narzędzia, technologie i~protokoły}
 
-\section{Urządzenia}
+\section{Urządzenia wykorzystywane w~projekcie}
 \subsection{ESP32}
-ESP32 to jednoukładowy mikrokontroler, zaprojektowny i produkwany przez firmę Espressif Systems. Jego najważniejsze cechy to:
+ESP32 to jednoukładowy mikrokontroler, zaprojektowny i~produkwany przez firmę Espressif Systems. Jego najważniejsze cechy to:
 \begin{itemize}
     \item energooszczędny procesor RISC o częstotliwości do 240 MHz
     \item 520 kB pamięci SRAM
     \item WiFi 802.11 b/g/n
     \item Bluetooth
-    \item liczne interfejsy cyfrowe i analogowe, w tym:
+    \item liczne interfejsy cyfrowe i analogowe, w~tym:
           \begin{itemize}
-              \item 2x UART
-              \item 2x I2C
-              \item 2x SPI
-              \item 2x I2S
-              \item 2x CAN
-              \item 2x ADC
-              \item 2x DAC
-              \item 2x PWM
-              \item 2x LED PWM
-              \item 2x Hall sensor
-              \item 2x SDIO
-              \item 2x Ethernet MAC
-              \item 2x USB 2.0
-          \end{itemize}\cite{ESP32:datasheet}
-          % \item 32 MB pamięci flash
+              \item UART
+              \item I2C
+              \item SPI
+              \item I2S
+              \item CAN
+              \item ADC
+              \item DAC
+              \item PWM
+              \item Ethernet MAC
+              \item USB 2.0
+          \end{itemize}
     \item \dots
-\end{itemize}
+          % \item 32 MB pamięci flash
+\end{itemize} \cite{ESP32:datasheet} \\
 Powstało wiele wersji tego układu, rózniące się m.in. szybkością procesora, ilością pamięci flash, ilością pinów, ilością interfejsów cyfrowych i analogowych, a także możliwością pracy w trybie bezprzewodowym (WiFi) lub przewodowym (Ethernet)\cite{ESP32:socs}.
+Najczęsciej układ te wykorzystywane różnych projektach IoT, zarówno jako czujniki, jak i~serwery.\cite{ESP32:datasheet}
 \subsection{Rasberry Pi Pico}
----
+
 \subsection{STM32}
----
+Rasberry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produkwany przez firmę Raspberry Pi Foundation. Charakteryzuje się ona dwurdzeniowym procesorem ARM Cortex-M0+ o częstotliwości 133 MHz, 264 kB pamięci SRAM oraz 2 MB pamięci flash. Płytka posiada również wiele interfejsów cyfrowych i analogowych, w~tym:
+\begin{itemize}
+    \item UART
+    \item I2C
+    \item SPI
+    \item I2S
+    \item ADC
+    \item DAC
+    \item PWM
+    \item USB 1.1
+\end{itemize}
+~\cite{PICO:datasheet,PICO:doc}
+Płytka
 
 \section{Języki programowania i technologie}
 \subsection{\texttt{C++} for Arduio}
