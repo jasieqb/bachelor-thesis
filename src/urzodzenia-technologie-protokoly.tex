@@ -3,7 +3,7 @@
 
 \section{Urządzenia wykorzystywane w~projekcie}
 \subsection{ESP32}
-ESP32 to jednoukładowy mikrokontroler, zaprojektowny i~produkwany przez firmę Espressif Systems. Jego najważniejsze cechy to:
+ESP32 to jednoukładowy mikrokontroler, zaprojektowany i~produkowany przez firmę Espressif Systems. Jego najważniejsze cechy to:
 \begin{itemize}
     \item energooszczędny procesor RISC o częstotliwości do 240 MHz
     \item 520 kB pamięci SRAM
@@ -26,11 +26,16 @@ ESP32 to jednoukładowy mikrokontroler, zaprojektowny i~produkwany przez firmę 
           % \item 32 MB pamięci flash
 \end{itemize} \cite{ESP32:datasheet} \\
 Powstało wiele wersji tego układu, rózniące się m.in. szybkością procesora, ilością pamięci flash, ilością pinów, ilością interfejsów cyfrowych i analogowych, a także możliwością pracy w trybie bezprzewodowym (WiFi) lub przewodowym (Ethernet)\cite{ESP32:socs}.
-Najczęsciej układ te wykorzystywane różnych projektach IoT, zarówno jako czujniki, jak i~serwery.\cite{ESP32:datasheet}
+Najczęściej układ te wykorzystywane różnych projektach IoT, zarówno jako czujniki, jak i~serwery.\cite{ESP32:datasheet}
+
+
+%  PROJECTS
+W projekcie ESP32 zostało wykorzystane w dwóch płytkach TTGO T3 V1.6.1. Jedna z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią LoRa a~siecią WiFi, a druga jako cześć systemu zbierania danych z wykorzystaniem LoRa
+
+
 \subsection{Rasberry Pi Pico}
 
-\subsection{STM32}
-Rasberry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produkwany przez firmę Raspberry Pi Foundation. Charakteryzuje się ona dwurdzeniowym procesorem ARM Cortex-M0+ o częstotliwości 133 MHz, 264 kB pamięci SRAM oraz 2 MB pamięci flash. Płytka posiada również wiele interfejsów cyfrowych i analogowych, w~tym:
+Rasbperry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produkowany przez firmę Raspberry Pi Foundation. Charakteryzuje się ona dwurdzeniowym procesorem ARM Cortex-M0+ o częstotliwości 133 MHz, 264 kB pamięci SRAM oraz 2 MB pamięci flash. Płytka posiada również wiele interfejsów cyfrowych i analogowych, w~tym:
 \begin{itemize}
     \item UART
     \item I2C
@@ -42,7 +47,23 @@ Rasberry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produkwa
     \item USB 1.1
 \end{itemize}
 ~\cite{PICO:datasheet,PICO:doc}
-Płytka
+Płytka ta jest często wykorzystywana przez hobbystów do różnych projektów IoT, a także jako sterownik silników, czy kontroler robotów.\cite{PICO:doc}
+
+%  PROJECTS
+W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania danych.
+\subsection{STM32}
+STM32 to rodzina 32 bitowych mikrokonolerów produkowanych przez firmę STMicroelectronics. Bazują one na architekturze ARM Cortex-M, oferują wysoką wydajność i energooszczędność. Cztery główne rodzaje mikrokontrolerów STM32 to:
+\begin{itemize}
+    \item Rodzina płytek z~częścią kodu F(4/5) i H — overują największą wydajność
+    \item Rodzina płytek z~częścią kodu L — oferują największą energooszczędność
+    \item Rodzina płytek z~częścią kodu G/C/F(1/3) — do zastosowań ogólnych
+    \item Rodzina płytek z częścią kodu W(L/B/BA) — do zastosowań bezprzewodowych. [SRPAWDZIĆ]
+\end{itemize}\cite{STM32:overview}
+Głównym zastosowaniem STM32 są urządzenia wbudowane, w~tym urządzenia medyczne, roboty, samochody, a~także urządzenia IoT[NEED CITE]
+% -- PROJECTS
+\\
+W projekcie wykorzystano dwie płytki STM32WL55, które zostały wykorzystane jako część systemu zbierania danych.
+
 
 \section{Języki programowania i technologie}
 \subsection{\texttt{C++} for Arduio}
@@ -50,6 +71,10 @@ Płytka
 \subsection{\texttt{C} for STM32}
 ---
 \subsection{\texttt{MicroPython} for Rasberry Pi Pico}
+MicroPython jest językiem 
+
+\section{Bazy danych i pozostałe technologie}
+\subsection{InfluxDB 2}
 ---
 \subsection{\texttt{Python} for MQTT}
 

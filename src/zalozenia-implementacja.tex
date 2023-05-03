@@ -1,1 +1,98 @@
 \chapter{Założenie i Implementacja}
+W poniższym rozdziale zaprocentowano założenia, potrzeby~i projekt projektu Sieci Meash na bazie LoRa
+
+\section{Podstawowe cele sieci}
+System ma kilka podstawowych założeń:
+\begin{itemize}
+    \item Jeden centralny punkt gromadzenia danych
+    \item Zapisywanie danych do bazy danych szeregów czasowych, w celu ich dalszego przetwarzania
+    \item Zbieranie danych z dużego obszaru
+    \item Niezależność od istniejących metod przesyłu danych (WiFI, Sieci komórkowe, Łączność satelitarna)
+    \item Niezależność od platformy sprzętowej
+    \item Zapewniać możliwie dużą dostarczalność pakietów
+    \item Dane czasowe nie muszą być super dokładne (dopuszczalne są drobne opóźnienia)
+    \item Węzły sieci tylko wysyłają dane, same nie konsumują przychodzących wiadomości
+\end{itemize}
+
+\section{Części sieci}
+W celu uzyskania wyżej wspomnianych założeń, zaproponowano system złożonych z kilku części:
+\subsection{Węzły sieci}
+Węzły sieci to urządzenia wyposażone w moduł LoRa i odpowiednie oprogramowanie pozwalające na pełną obsługę sieci. Gdy węzeł odbierze wiadomość, sprawdza jej poprawność i rozsyła ja dalej w celu zapewnienia jak największego zasięgu i wystarczalności
+
+Urządzenie to może być również wyposażone w różnego rodzaju czujniki, które dostarczają danych bazy danych.
+
+\subsection{Stacja przekaźnikowa}
+Stacja przekaźnikowa to urządzenie wyposażone zarówno w moduł LoRa jak i moduł umożliwiający komunikację z siecią Internet (np. moduł WiFI lub moduł bazy Ethernet).
+
+Urządzenie to odbiera przychodzące wiadomości LoRa i przesyła je do brokera wiadomości
+
+\subsection{Broker wiadomości}
+Broker wiadomości to program, działający na komputerze mającym dostęp do sieci, umożliwia on wydajną komunikację pomiędzy Stacją Przekaźnikową a Bazą Danych
+
+\subsection{Baza danych}
+Baza Danych umożliwiająca zapisywanie sporej ilości danych, uwzględniając również ich czas (baza danych szeregów czasowych).
+O zapisy danych z brokera wiadomości do bazy danych dba osobny program, który powinien sprawdzać również poprawność tych wiadomości, jak i dbać o to by nie zapisywać powtórzonych wiadomości
+
+\section{Wiadomości}
+Każda z wiadomości przesyłanych za pomocą tych sieci powinna mieć formę jak zaprezentowano na listingu~\ref{lst:packet_format}
+
+Zawiera ona pola:
+\begin{itemize}
+    \item \texttt{ttl} — [Ang. time to live — czas życia] Wartość określająca maksymalną liczbę skoków pomiędzy węzłami sieci. Domyślnie wynosi 10, może zostać wydłużona w zależności od wielkości planowanej sieci
+    \item \texttt{m\_id} — UUID \cite{RFC:uuid} wiadomości, gwarantujący niepowtarzalności tej wiadomości. Ułatwia również jej dalsze przetwarzanie
+    \item \texttt{d\_id} — numer identyfikacyjny urządzenia z którego pochodzi wiadomość
+    \item \texttt{values} — słownik zawierający dane z urządzenia, do zapisania w bazie
+\end{itemize}
+
+\begin{lstfloat}[b]
+    \lstset{language=JavaScript}
+    \begin{lstlisting}[frame=single]
+{
+    "d_id": "id_233",
+    "values": {
+        "temp": "21",
+        "hum": "50",
+        "press": "1000",
+        "light": "100",
+        "co2": "1000",
+        "pm25": "10",
+        "pm10": "20"
+    },
+    "ttl": 10,
+    "m_id": "eaa17a7b-9388-43b6-9310-731c942fc6b9"
+}          
+\end{lstlisting}
+    \caption{Przykładowa wiadomość przesyłana przez system}\label{lst:packet_format}
+\end{lstfloat}
+
+\section{Obsługa protokołu}
+
+\subsection{Działanie węzłów}
+Wiadomości generowane są przez węzły sieci, zawierając wszystkie niezbędne pola (wymienione wyżej) i odczyty z czujników zamieszczonych na węźle. Następnie zostaje ona rozesłana do wszystkich węzłów w zasięgu (broadcasting).
+
+Węzeł odbierając wiadomość, sprawdza jej poprawność (czy jest odpowiednio sformatowana, czy zawiera wszystkie potrzebne pola), i jeżeli wiadomość jest poprawna,a pole \texttt{ttl} jest większe od 0 rozsyła wiadomość dalej.
+Sprawdzanie wiadomości odbywa się by wyeliminować wiadomości niepoprawne z sieci.
+
+% TODO wstawić rysunek 
+
+\subsection{Działanie przekaźnika}
+Przekaźnik odbiera wiadomości, i przesyła je do brokera wiadomości. Nie sprawdza poprawności wiadomości by zapewnić maksymalną wydajność i niezawodność.
+
+\subsection{Działanie bazy danych i programu zapisującego dane}
+Program pobiera kolejne wiadomości od brokera i przetwarza je w kolejności:
+\begin{enumerate}
+    \item Sprawdzenie poprawności wiadomości
+    \item \label{itm:powtorki} Sprawdzenie czy wiadomość nie została już sprawdzona (na podstawie pola \texttt{m\_id})
+    \item Zapisanie danych ze słownika \texttt{values} do bazy danych i przyporządkowanie ich do \texttt{d\_id}
+    \item Zapisanie w pamięci operacyjnej \texttt{m\_id}, potem do wykorzystania w~kroku \ref{itm:powtorki}
+\end{enumerate}
+
+\section{Implementacja}
+\subsection{Implementacja przykładowych węzłów sieci}
+W wyniku pracy nad systemem zbierania danych przygotowano implementację węzłów sieci w wykonrzystaniem 3 platform sprzętowych:
+% TODO sprawdzić jakie dokładnie to modele
+\begin{itemize}
+    \item Rasberry Pi Pico +
+    \item ESP32 TTYGO
+    \item STM32 WL\dots
+\end{itemize}
