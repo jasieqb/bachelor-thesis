@@ -1,32 +1,3 @@
-% @online{a,
-%   author = {A},
-%   title  = {A},
-%   url    = {http://a.com}
-% }
-
-% @online{b,
-%   author  = {MultiMedia LLC},
-%   title   = {{MS Windows NT} Kernel Description},
-%   year    = 1999,
-%   url     = {http://web.archive.org/web/20080207010024/http://www.808multimedia.com/winnt/kernel.htm},
-%   urldate = {2010-09-30}
-% }
-
-% @misc{web:lang:stats,
-%   author = {W3Techs},
-%   title  = {Usage Statistics of Content Languages
-%             for Websites},
-%   year   = {2017},
-%   note   = {Last accessed 16 September 2017},
-%   url    = {http://w3techs.com/technologies/overview/content_language/all}
-% }
-%  @misc{enwiki:1064642777,
-%   author       = {{Wikipedia contributors}},
-%   title        = {ADAS --- {Wikipedia}{,} The Free Encyclopedia},
-%   year         = {2022},
-%   howpublished = {\url{https://en.wikipedia.org/w/index.php?title=ADAS&oldid=1064642777}},
-%   note         = {[Online; accessed 15-April-2023]}
-% }
 % --------------------
 %  ESP32
 @online{ESP32:socs,
@@ -41,6 +12,60 @@
   title   = {ESP32 Datasheet},
   year    = 2023,
   url     = {https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf},
+  urldate = {2023-04-16}
+}
+
+@online{ESP32:sx1276-doc,
+  url = {https://semtech.my.salesforce.com/sfc/p/#E0000000JelG/a/2R0000001Rbr/6EfVZUorrpoKFfvaF_Fkpgp5kzjiNyiAbqcpqh9qSjE},
+  title = {SX1276/77/78/79 - 137 MHz to 1020 MHz Low Power Long Range Transceiver},
+  author = {Semtech},
+  year = 2020,
+  urldate = {2023-04-16}
+}
+
+@online{ESP32:lora-lib,
+  url = {https://github.com/sandeepmistry/arduino-LoRa},
+  title = {arduino-LoRa},
+  author = {sandeepmistry},
+  year = 2023,
+  urldate = {2023-04-16}
+}
+
+@online{ESP32:ArduinoJson,
+  url     = {https://github.com/bblanchon/ArduinoJson},
+  title   = {ArduinoJson},
+  author  = {bblanchon},
+  year    = 2023,
+  urldate = {2023-04-16}
+}
+
+@online{ESP32:Adafruit-SSD1306,
+  url     = {https://github.com/adafruit/Adafruit_SSD1306},
+  title   = {Adafruit\_SSD1306},
+  author  = {adafruit},
+  year    = 2023,
+  urldate = {2023-04-16}
+}
+
+@online{ESP32:ESPRandom,
+  url     = {https://github.com/moritz89/ESPRandom},
+  title   = {ESPRandom},
+  author  = {moritz89},
+  year    = 2023,
+  urldate = {2023-04-16}
+}
+@online{ESP32:Arduino,
+  url     = {https://github.com/espressif/arduino-esp32},
+  title   = {arduino-esp32},
+  author  = {espressif},
+  year    = 2023,
+  urldate = {2023-04-16}
+}
+@online{ESP32:PubSubClient,
+  url     = {https://github.com/knolleary/pubsubclient},
+  title   = {pubsubclient},
+  author  = {knolleary},
+  year    = 2020,
   urldate = {2023-04-16}
 }
 % --------------------
@@ -59,9 +84,29 @@
   url     = {https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html},
   urldate = {2023-04-16}
 }
-
-% % --------------------
-% %  STM32
+@online{PICO:lora-lib,
+  url = {https://github.com/ehong-tl/micropySX126X},
+  title = {micropySX126X},
+  author = {ehong-tl},
+  year = 2023,
+  urldate = {2023-04-16}
+}
+@online{PICO:sx1262-doc,
+  url = {https://www.waveshare.com/w/upload/e/e1/DS_SX1261-2_V1.2.pdf},
+  title = {SX1261/2 Low Power Long Range Transceiver},
+  author = {Semtech},
+  year = 2019,
+  urldate = {2023-04-16}
+}
+@online{PICO:waveshare-doc,
+  url     = {https://www.waveshare.com/wiki/Pico-LoRa-SX1262},
+  title   = {Waveshare SX1262 LoRa Node Module 868MHz},
+  author  = {Waveshare},
+  year    = 2019,
+  urldate = {2023-04-16}
+}
+% --------------------
+%  STM32
 @online{STM32:overview,
   author  = {STMicroelectronics},
   title   = {STM32 Overwiev},
@@ -69,13 +114,58 @@
   url     = https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html,
   urldate = {2023-04-23}
 }
-
-% ---
+% --------------------
 % RFC
 @online{RFC:uuid,
   author  = {ietf},
   title   = {A Universally Unique IDentifier (UUID) URN Namespace},
   year    = 2005,
   url     = https://datatracker.ietf.org/doc/html/rfc4122,
+  urldate = {2023-04-23}
+}
+% --------------------
+% Python
+@online{py:paho-mqtt,
+  author  = {Eclipse},
+  title   = {Paho MQTT Python Client},
+  year    = 2023,
+  url     = {https://www.eclipse.org/paho/},
+  urldate = {2023-04-23}
+}
+@online{py:influxdb,
+  author  = {influxdata},
+  title   = {InfluxDB Python client library},
+  year    = 2023,
+  url     = {https://docs.influxdata.com/influxdb/v2.7/api-guide/client-libraries/python/},
+  urldate = {2023-04-23}
+}
+@online{py:redis,
+  author  = {Redis},
+  title   = {redis-py},
+  year    = 2023,
+  url     = {https://redis.io/docs/clients/python/},
+  urldate = {2023-04-23}
+}
+% --------------------
+% Tools
+@online{tool:pio,
+  url     = {https://docs.platformio.org/en/latest/},
+  author  = {PlatformIO},
+  title   = {PlatformIO Documentation},
+  year    = 2023,
+  urldate = {2023-04-23}
+}
+@online{tool:mosquitto,
+  url     = {https://mosquitto.org/},
+  author  = {Eclipse Mosquitto},
+  title   = {Eclipse Mosquitto},
+  year    = 2023,
+  urldate = {2023-04-23}
+}
+@online{tool:influxdb,
+  url     = {https://docs.influxdata.com/influxdb/v2.7/},
+  author  = {InfluxData},
+  title   = {InfluxDB Documentation},
+  year    = 2023,
   urldate = {2023-04-23}
 }

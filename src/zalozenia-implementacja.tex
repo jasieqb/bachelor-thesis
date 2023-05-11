@@ -1,5 +1,5 @@
 \chapter{Założenie i Implementacja}
-W poniższym rozdziale zaprocentowano założenia, potrzeby~i projekt projektu Sieci Meash na bazie LoRa
+W poniższym rozdziale zaprocentowano założenia, potrzeby~i projekt projektu Sieci Mesh na bazie LoRa
 
 \section{Podstawowe cele sieci}
 System ma kilka podstawowych założeń:
@@ -17,7 +17,7 @@ System ma kilka podstawowych założeń:
 \section{Części sieci}
 W celu uzyskania wyżej wspomnianych założeń, zaproponowano system złożonych z kilku części:
 \subsection{Węzły sieci}
-Węzły sieci to urządzenia wyposażone w moduł LoRa i odpowiednie oprogramowanie pozwalające na pełną obsługę sieci. Gdy węzeł odbierze wiadomość, sprawdza jej poprawność i rozsyła ja dalej w celu zapewnienia jak największego zasięgu i wystarczalności
+Węzły sieci to urządzenia wyposażone w moduł LoRa i odpowiednie oprogramowanie pozwalające na pełną obsługę sieci. Gdy węzeł odbierze wiadomość, sprawdza jej poprawność i rozsyła ja dalej w celu zapewnienia jak największego zasięgu i dostarczalności
 
 Urządzenie to może być również wyposażone w różnego rodzaju czujniki, które dostarczają danych bazy danych.
 
@@ -83,16 +83,62 @@ Program pobiera kolejne wiadomości od brokera i przetwarza je w kolejności:
 \begin{enumerate}
     \item Sprawdzenie poprawności wiadomości
     \item \label{itm:powtorki} Sprawdzenie czy wiadomość nie została już sprawdzona (na podstawie pola \texttt{m\_id})
-    \item Zapisanie danych ze słownika \texttt{values} do bazy danych i przyporządkowanie ich do \texttt{d\_id}
+    \item Zapisanie danych ze słownika \texttt{values} do bazy danych i przyporządkowanie ich do \texttt{d\_id}, oznaczenie ich znacznikiem czasowym.
     \item Zapisanie w pamięci operacyjnej \texttt{m\_id}, potem do wykorzystania w~kroku \ref{itm:powtorki}
 \end{enumerate}
+Baza danych powinna przechowywać dane, takie jak:
+\begin{itemize}
+    \item \texttt{d\_id} — identyfikator urządzenia
+    \item znacznik czasowy
+    \item wartość pomiaru
+    \item nazwa pomiaru
+\end{itemize}
 
 \section{Implementacja}
-\subsection{Implementacja przykładowych węzłów sieci}
-W wyniku pracy nad systemem zbierania danych przygotowano implementację węzłów sieci w wykonrzystaniem 3 platform sprzętowych:
+\subsection{Implementacja węzłów sieci}
+W wyniku pracy nad systemem zbierania danych przygotowano implementację węzłów sieci w wykonrzystaniem 2 platform sprzętowych:
 % TODO sprawdzić jakie dokładnie to modele
 \begin{itemize}
-    \item Rasberry Pi Pico +
-    \item ESP32 TTYGO
-    \item STM32 WL\dots
+    \item Rasberry Pi Pico
+    \item TTGO LoRa32
 \end{itemize}
+
+\subsubsection{Rasberry Pi Pico}
+W wyniku pracy nad systemem zostały przygotowane dwa, identyczne urządzenia oparte o Rasberry Pi Pico. Urządzenie zostało wyposażone w moduł LoRa SX1262~\cite{PICO:sx1262-doc}(z wykorzystaniem płytki rozwojowej \texttt{Waveshare SX1262 LoRa Node Module}~\cite{PICO:waveshare-doc}) oraz czujnik temperatury i wilgotności DHT11. Urządzenie zostało zaprogramowane w języku MicroPython z wykorzystaniem biblioteki \texttt{micropySX126X}~\cite{PICO:lora-lib}. Urządzenie wysyła wiadomości zawierające odczyty z czujnika co 5 minut. Wysyłanie wiadomości odbywa się w sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w tym czasie.
+
+\subsubsection{TTGO LoRa32}
+W wyniku pracy nad systemem zostało przygotowane jedno urządzenie oparte o~TTGO LoRa32. Urządzenie zostało wyposażone w moduł LoRa SX1276~\cite{ESP32:sx1276-doc}. Urządzenie zostało zaprogramowane w języku C++ z użyciem PlatformIO, ekosystemu do programowania urządzeń IoT.~\cite{tool:pio}. W programie została wykorzystane biblioteki:
+\begin{itemize}
+    \item \texttt{arduino-LoRa} — biblioteka do obsługi modułu LoRa
+          ~\cite{ESP32:lora-lib}
+    \item \texttt{ArduinoJson} — biblioteka do obsługi formatu JSON~\cite{ESP32:ArduinoJson}
+    \item \texttt{Adafruit-SSD1306} — biblioteka do obsługi wyświetlacza~\cite{ESP32:Adafruit-SSD1306} OLED
+    \item \texttt{ESPRandom} — biblioteka do obsługi sprzętowego generatora liczb pseudolosowych~\cite{ESP32:ESPRandom}
+\end{itemize}
+Urządzenie wysyła wiadomości zawierające odczyty z czujnika co 5 minut. Wiadomości zawierają wartości losowe, wygenerowane za pomocą sprzętowego generatora liczb pseudolosowych zintegrowanego z mikrokontrolerem ESP32.  Wysyłanie wiadomości odbywa się w sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w tym czasie.
+
+\subsection{Implementacja stacji przekaźnikowej}
+W wyniku pracy nad systemem zostało przygotowane jedno urządzenie oparte o płytkę TTGO LoRa32. Urządzenie zostało wyposażone w moduł LoRa SX1276~\cite{ESP32:sx1276-doc} oraz moduł WiFi ESP32~\cite{ESP32:datasheet}. Urządzenie zostało zaprogramowane w języku C++ z wykorzystaniem PlatformIO~\cite{tool:pio} W programie została wykorzystane biblioteki:
+\begin{itemize}
+    \item \texttt{arduino-LoRa} — biblioteka do obsługi modułu LoRa~\cite{ESP32:lora-lib}
+
+    \item \texttt{Adafruit-SSD1306} — biblioteka do obsługi wyświetlacza OLED~\cite{ESP32:Adafruit-SSD1306}
+    \item \texttt{WiFi} — biblioteka do obsługi modułu WiFi ESP32, zawarta w pakiecie \texttt{arduino-esp32}~\cite{ESP32:Arduino}
+    \item \texttt{PubSubClient} — biblioteka do obsługi protokołu MQTT~\cite{ESP32:PubSubClient}
+\end{itemize}
+Urządzenie odbiera wiadomości LoRa i przesyła je do brokera wiadomości za pomocą protokołu MQTT. Wysyłanie wiadomości odbywa się w sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w tym czasie. Urządzenie wyświetla na ekranie OLED informacje o stanie sieci LoRa, oraz otrzymanych wiadomościach. Urządzenie nie sprawdza poprawności wiadomości, by zapewnić jak największą wydajność i niezawodność.
+
+\subsection{Implementacja brokera wiadomości}
+Aby zapewnić niezawodność i wysoką wydajność komunikacji zdecydowano użyć otwartoźródłowego brokera wiadomości Mosquitto~\cite{tool:mosquitto}. Jest to sprawdzony, wydajny i niezawodny program, który jest szeroko stosowany w systemach IoT, również w przemyśle.~\cite{tool:mosquitto}
+
+\subsection{Baza danych}
+W celu zapisywania danych zdecydowano użyć bazy danych InfluxDB 2.0~\cite{tool:influxdb}. Jest to baza danych szeregów czasowych, która jest wydajna i niezawodna.~\cite{tool:influxdb}
+
+\subsection{Program zapisujący dane}
+W celu zapisywania danych zdecydowano użyć programu napisanego w języku Python. Program został napisany w języku Python, z wykorzystaniem bibliotek:
+\begin{itemize}
+    \item \texttt{paho-mqtt} — biblioteka do obsługi protokołu MQTT~\cite{py:paho-mqtt}
+    \item \texttt{influxdb-client} — biblioteka do obsługi bazy danych InfluxDB~\cite{py:influxdb}
+    \item \texttt{redis-py} — biblioteka do obsługi bazy danych Redis~\cite{py:redis}
+\end{itemize}
+Ostania, wymieniona biblioteka została użyta do połączenia się z bazą danych w pamięci w celu przechowywania identyfikatorów wiadomości, które zostały już sprawdzone. Dzięki temu program nie zapisuje powtórzonych wiadomości do bazy danych.
