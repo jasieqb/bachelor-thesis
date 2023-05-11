@@ -14,8 +14,23 @@ System ma kilka podstawowych założeń:
     \item Węzły sieci tylko wysyłają dane, same nie konsumują przychodzących wiadomości
 \end{itemize}
 
+\begin{figure}[b]
+    \begin{center}
+        % \includegraphics[width=3cm]{pic/diagram-systemu.png}
+        \includegraphics[width=15cm]{pic/diagram-systemu.png}
+    \end{center}
+    \caption{Diagram prezentujący schemat ideowy systemu}\label{rys:system-diagram}
+\end{figure}
+
 \section{Części sieci}
 W celu uzyskania wyżej wspomnianych założeń, zaproponowano system złożonych z kilku części:
+\begin{itemize}
+    \item Węzły sieci
+    \item Stacje przekaźnikowe
+    \item Broker wiadomości
+    \item Baza danych
+\end{itemize}
+Na rysunku~\ref{rys:system-diagram} przedstawiono schemat ideowy systemu.
 \subsection{Węzły sieci}
 Węzły sieci to urządzenia wyposażone w moduł LoRa i odpowiednie oprogramowanie pozwalające na pełną obsługę sieci. Gdy węzeł odbierze wiadomość, sprawdza jej poprawność i rozsyła ja dalej w celu zapewnienia jak największego zasięgu i dostarczalności
 
