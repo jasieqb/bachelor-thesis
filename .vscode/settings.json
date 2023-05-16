@@ -1,8 +1,15 @@
 {
     "cSpell.words": [
+        "Adafruit",
+        "Dockera",
         "Espressif",
         "mikrokontrolerem",
-        "otwartoźródłowego"
+        "Mosquitto",
+        "MQTT",
+        "otwartoźródłowego",
+        "paho",
+        "TTGO",
+        "Waveshare"
     ],
     "cSpell.language": "pl,en"
 }

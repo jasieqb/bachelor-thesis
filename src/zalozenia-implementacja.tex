@@ -14,14 +14,6 @@ System ma kilka podstawowych założeń:
     \item Węzły sieci tylko wysyłają dane, same nie konsumują przychodzących wiadomości
 \end{itemize}
 
-\begin{figure}[b]
-    \begin{center}
-        % \includegraphics[width=3cm]{pic/diagram-systemu.png}
-        \includegraphics[width=15cm]{pic/diagram-systemu.png}
-    \end{center}
-    \caption{Diagram prezentujący schemat ideowy systemu}\label{rys:system-diagram}
-\end{figure}
-
 \section{Części sieci}
 W celu uzyskania wyżej wspomnianych założeń, zaproponowano system złożonych z kilku części:
 \begin{itemize}
@@ -31,6 +23,15 @@ W celu uzyskania wyżej wspomnianych założeń, zaproponowano system złożonyc
     \item Baza danych
 \end{itemize}
 Na rysunku~\ref{rys:system-diagram} przedstawiono schemat ideowy systemu.
+
+\begin{figure}[p!]
+    \begin{center}
+        % \includegraphics[width=3cm]{pic/diagram-systemu.png}
+        \includegraphics[width=15cm]{pic/diagram-systemu.png}
+    \end{center}
+    \caption{Diagram prezentujący schemat ideowy systemu}\label{rys:system-diagram}
+\end{figure}
+
 \subsection{Węzły sieci}
 Węzły sieci to urządzenia wyposażone w moduł LoRa i odpowiednie oprogramowanie pozwalające na pełną obsługę sieci. Gdy węzeł odbierze wiadomość, sprawdza jej poprawność i rozsyła ja dalej w celu zapewnienia jak największego zasięgu i dostarczalności
 
@@ -59,7 +60,8 @@ Zawiera ona pola:
     \item \texttt{values} — słownik zawierający dane z urządzenia, do zapisania w bazie
 \end{itemize}
 
-\begin{lstfloat}[b]
+\begin{lstfloat}[h!]
+    % \begin{lstfloat}[b!]
     \lstset{language=JavaScript}
     \begin{lstlisting}[frame=single]
 {
@@ -88,8 +90,6 @@ Wiadomości generowane są przez węzły sieci, zawierając wszystkie niezbędne
 Węzeł odbierając wiadomość, sprawdza jej poprawność (czy jest odpowiednio sformatowana, czy zawiera wszystkie potrzebne pola), i jeżeli wiadomość jest poprawna,a pole \texttt{ttl} jest większe od 0 rozsyła wiadomość dalej.
 Sprawdzanie wiadomości odbywa się by wyeliminować wiadomości niepoprawne z sieci.
 
-% TODO wstawić rysunek 
-
 \subsection{Działanie przekaźnika}
 Przekaźnik odbiera wiadomości, i przesyła je do brokera wiadomości. Nie sprawdza poprawności wiadomości by zapewnić maksymalną wydajność i niezawodność.
 
@@ -110,16 +110,17 @@ Baza danych powinna przechowywać dane, takie jak:
 \end{itemize}
 
 \section{Implementacja}
+
 \subsection{Implementacja węzłów sieci}
-W wyniku pracy nad systemem zbierania danych przygotowano implementację węzłów sieci w wykonrzystaniem 2 platform sprzętowych:
+W wyniku pracy nad systemem zbierania danych przygotowano implementację węzłów sieci w wykorzystaniem 2 platform sprzętowych:
 % TODO sprawdzić jakie dokładnie to modele
 \begin{itemize}
-    \item Rasberry Pi Pico
+    \item Raspberry Pi Pico
     \item TTGO LoRa32
 \end{itemize}
 
 \subsubsection{Rasberry Pi Pico}
-W wyniku pracy nad systemem zostały przygotowane dwa, identyczne urządzenia oparte o Rasberry Pi Pico. Urządzenie zostało wyposażone w moduł LoRa SX1262~\cite{PICO:sx1262-doc}(z wykorzystaniem płytki rozwojowej \texttt{Waveshare SX1262 LoRa Node Module}~\cite{PICO:waveshare-doc}) oraz czujnik temperatury i wilgotności DHT11. Urządzenie zostało zaprogramowane w języku MicroPython z wykorzystaniem biblioteki \texttt{micropySX126X}~\cite{PICO:lora-lib}. Urządzenie wysyła wiadomości zawierające odczyty z czujnika co 5 minut. Wysyłanie wiadomości odbywa się w sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w tym czasie.
+W wyniku pracy nad systemem zostały przygotowane dwa, identyczne urządzenia oparte o Raspberry Pi Pico. Urządzenie zostało wyposażone w moduł LoRa SX1262~\cite{PICO:sx1262-doc}(z wykorzystaniem płytki rozwojowej \texttt{Waveshare SX1262 LoRa Node Module}~\cite{PICO:waveshare-doc}) oraz czujnik temperatury i wilgotności DHT11. Urządzenie zostało zaprogramowane w języku MicroPython z wykorzystaniem biblioteki \texttt{micropySX126X}~\cite{PICO:lora-lib}. Urządzenie wysyła wiadomości zawierające odczyty z czujnika co 5 minut. Wysyłanie wiadomości odbywa się w sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w tym czasie.
 
 \subsubsection{TTGO LoRa32}
 W wyniku pracy nad systemem zostało przygotowane jedno urządzenie oparte o~TTGO LoRa32. Urządzenie zostało wyposażone w moduł LoRa SX1276~\cite{ESP32:sx1276-doc}. Urządzenie zostało zaprogramowane w języku C++ z użyciem PlatformIO, ekosystemu do programowania urządzeń IoT.~\cite{tool:pio}. W programie została wykorzystane biblioteki:
@@ -136,7 +137,6 @@ Urządzenie wysyła wiadomości zawierające odczyty z czujnika co 5 minut. Wiad
 W wyniku pracy nad systemem zostało przygotowane jedno urządzenie oparte o płytkę TTGO LoRa32. Urządzenie zostało wyposażone w moduł LoRa SX1276~\cite{ESP32:sx1276-doc} oraz moduł WiFi ESP32~\cite{ESP32:datasheet}. Urządzenie zostało zaprogramowane w języku C++ z wykorzystaniem PlatformIO~\cite{tool:pio} W programie została wykorzystane biblioteki:
 \begin{itemize}
     \item \texttt{arduino-LoRa} — biblioteka do obsługi modułu LoRa~\cite{ESP32:lora-lib}
-
     \item \texttt{Adafruit-SSD1306} — biblioteka do obsługi wyświetlacza OLED~\cite{ESP32:Adafruit-SSD1306}
     \item \texttt{WiFi} — biblioteka do obsługi modułu WiFi ESP32, zawarta w pakiecie \texttt{arduino-esp32}~\cite{ESP32:Arduino}
     \item \texttt{PubSubClient} — biblioteka do obsługi protokołu MQTT~\cite{ESP32:PubSubClient}
