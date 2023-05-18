@@ -112,14 +112,11 @@ W wyniku testów zostało stwierdzone, że węzły sieci są w stanie obsłuży�
 
 \subsection{Zauważone problemy}
 W trakcie testów zostały zauważone następujące problemy:
+\subsubsection{Błędne pakiety}
 \begin{itemize}
     \item Węzły sieci czasami odbierały błędne pakiety, jak na rysunku~\ref{rys:zly-pakiet}. Problem ten został rozwiązany prze sprawdzanie czy odebrany pakiet jest poprawny, a w przypadku błędu, pakiet jest odrzucany.
-    \item Przekaźnik sieci czasami przekazuje błędne pakiety do brokera. Problem ten został rozwiązany przez sprawdzanie czy odebrany pakiet jest poprawny na poziomie programu zapisującego do bazy danych, a w przypadku błędu, pakiet jest odrzucany. Można byłoby sprawdzać poprawność pakietu na poziomie przekaźnika, ale obniżyłoby to wydajność systemu.
+    \item Przekaźnik sieci czasami przekazuje błędne pakiety do brokera(jak na rysunku~\ref{rys:zly-pakiet}). Problem ten został rozwiązany przez sprawdzanie czy odebrany pakiet jest poprawny na poziomie programu zapisującego do bazy danych, a w przypadku błędu, pakiet jest odrzucany. Można byłoby sprawdzać poprawność pakietu na poziomie przekaźnika, ale obniżyłoby to wydajność systemu.
 \end{itemize}
-
-
-% TODO: wytłumaczyć błąd ludzki
-Na wykresie~\ref{rys} widać
 
 \begin{figure}[b!]
     \begin{center}
@@ -127,3 +124,15 @@ Na wykresie~\ref{rys} widać
     \end{center}
     \caption{Przykładowy błędny pakiet odebrany przez jeden z węzłów sieci}\label{rys:zly-pakiet}
 \end{figure}
+
+\subsubsection{Błąd ludzki}
+Jak łatwo zauważyć na wykresie~\ref{rys:diagram-scat} niestety w bazie danych pojawiają się luki w zapisanych danych. Takie luki spowodowane są brakami zasilania spowodowane przez osoby obsługujące ten system w czasie testów. Niektóre czujniki traciły zasilanie przez nieuważne zmiany kabli zasilających czy nie zmienianie baterii na czas. Jednym z możliwych rozwiązań jest zastosowanie większej baterii w każdym węźle sieci.
+
+\begin{figure}[b!]
+    \begin{center}
+        \includegraphics[width=13cm]{pic/diagram-scat-humm.png}
+    \end{center}
+    \caption{Szczegółowych diagram danych zapisanych w bazie między 4 Maja, a 6 Maja 2023}\label{rys:diagram-scat}
+\end{figure}
+
+%  TODO: add more screenshots
