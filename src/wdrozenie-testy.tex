@@ -6,7 +6,7 @@ System został wdrożony 1 maja 2023 roku. Wdrożenie polegało na uruchomieniu 
 \subsection{Węzły sieci}
 % Węzły sieci zostały umieszczone w trzech różnych miejscach w Lublinie. Pierwszy z nich został umieszczony na dachu budynku Wydziału Matematyki, Fizyki i Informatyki UMCS. Drugi został umieszczony na dachu budynku Wydziału Elektrotechniki i Informatyki Politechniki Lubelskiej. Trzeci został umieszczony na dachu budynku Wydziału Informatyki Politechniki Lubelskiej. Wszystkie urządzenia zostały umieszczone na wysokości 20 metrów nad poziomem gruntu. Wszystkie urządzenia zostały umieszczone na zewnątrz, w~specjalnych obudowach, które zapewniają ochronę przed warunkami atmosferycznymi. Wszystkie urządzenia zostały zasilone z sieci elektrycznej.
 
-Trzy węzły sieci zostały rozmieszczone na małym obszarze, około 30 metrów od siebie, w dwóch budynkach. Dwa urządzenia (jedno Raspberry Pi Pico i jedno TTGO LoRa32) zasilane są z sieci, jedno za pomocą baterii. Urządzenia zostały połączone z czujnikami za pomocą zwykłych kabli prototypowych, jak na zdjęciu~\ref{rys:wezel1}. Przykład urządzenia wykorzystującego wbudowane czujniki został zaprezentowany na zdjęciu~\ref{rys:wezel2}
+Trzy węzły sieci zostały rozmieszczone na małym obszarze, około 30 metrów od siebie, w dwóch budynkach. Dwa urządzenia (jedno Raspberry Pi Pico i jedno TTGO LoRa32) zasilane są z sieci, jedno za pomocą baterii. Urządzenia zostały połączone z czujnikami za pomocą zwykłych kabli prototypowych, jak na zdjęciu~\ref{rys:wezel1} i ~\ref{rys:wezel2}. Przykład urządzenia wykorzystującego wbudowane czujniki został zaprezentowany na zdjęciu~\ref{rys:wezel2}
 
 \begin{figure}[b!]
     \begin{center}
@@ -18,9 +18,17 @@ Trzy węzły sieci zostały rozmieszczone na małym obszarze, około 30 metrów 
 
 \begin{figure}[b!]
     \begin{center}
+        \includegraphics[width=13cm]{pic/logi-pico.png}
+        % \includegraphics[height=13cm]{pic/logi-pico.png}
+    \end{center}
+    \caption{Zrzut ekranu zawierający logi z jedno z węzłów sieci(Raspberry Pi Pico)}\label{rys:logi-pico}
+\end{figure}
+
+\begin{figure}[b!]
+    \begin{center}
         \includegraphics[width=13cm]{pic/wezel2.jpg}
     \end{center}
-    \caption{Zdjęcie węzła sieci opartego o TTGO LoRa32}\label{rys:wezel2}
+    \caption{Zdjęcie węzła sieci opartego  TTGO LoRa32}\label{rys:wezel2}
 \end{figure}
 
 \subsection{Stacja przekaźnikowa}
@@ -32,6 +40,7 @@ Stacja przekaźnikowa została umieszczona w pobliżu głównego serwera, w zasi
     \end{center}
     \caption{Zdjęcie stacji przekaźnikowej opartej o TTGO LoRa32}\label{rys:stacja1}
 \end{figure}
+
 
 \subsection{Serwer testowy}
 Na serwerze testowy zostały uruchomione wszystkie usługi, które zostały wykorzystane w projekcie, w szczególności:
@@ -47,7 +56,21 @@ Serwer został uruchomiony na maszynie wewnątrz budynku, w sieci lokalnej. Na s
 Broker wiadomości został uruchomiony na wspólnym serwerze wewnątrz budynku. Broker został zabezpieczony hasłem, które zostało zapisane w pliku konfiguracyjnym. Wszystkie urządzenia zostały skonfigurowane tak, aby połączyć się z brokerem za pomocą tego hasła. Niestety, nie zostało użyte szyfrowanie TLS.
 
 \subsection{Baza danych i program zapisujący dane}
-Baza danych wraz z programem zapisującym dane zostały uruchomione na wspólnym serwerze wewnątrz budynku. Baza danych została zabezpieczona tokenem dostępu, który został zapisany w pliku konfiguracyjnym. Wszystkie urządzenia zostały skonfigurowane tak, aby połączyć się z bazą danych za pomocą tego tokenu. Niestety, nie zostało użyte szyfrowanie TLS. Zarówno baza danych, jak i program zapisujący dane zostały uruchomione w kontenerach Dockera, w celu zapewnienia izolacji i~łatwości konfiguracji.
+Baza danych wraz z programem zapisującym dane zostały uruchomione na wspólnym serwerze wewnątrz budynku. Baza danych została zabezpieczona tokenem dostępu, który został zapisany w pliku konfiguracyjnym. Wszystkie urządzenia zostały skonfigurowane tak, aby połączyć się z bazą danych za pomocą tego tokenu. Niestety, nie zostało użyte szyfrowanie TLS. Zarówno baza danych, jak i program zapisujący dane zostały uruchomione w kontenerach Dockera, w celu zapewnienia izolacji i~łatwości konfiguracji. Na rysunku \ref{rys:influxdb-web} został przedstawiony zrzut ekranu interfejsu użytkownika InfluxDB 2. Na rysunku \ref{rys:logi-connector} został przedstawiony zrzut ekranu zawierający logi programu zapisującego pomiary do bazy InfluxDB 2.
+
+\begin{figure}[b!]
+    \begin{center}
+        \includegraphics[width=13cm]{pic/influxdb-web.png}
+    \end{center}
+    \caption{Zrzut ekranu interfejsu użytkownika InfluxDB 2}\label{rys:influxdb-web}
+\end{figure}
+
+\begin{figure}[b!]
+    \begin{center}
+        \includegraphics[width=13cm]{pic/logi-connector.png}
+    \end{center}
+    \caption{Zrzut ekranu zawierający logi programu zapisującego pomiary do bazy InfluxDB 2}\label{rys:logi-connector}
+\end{figure}
 
 \subsection{Redis}
 Redis został uruchomiony na wspólnym serwerze wewnątrz budynku. Redis pozostał niezabezpieczony, ponieważ został udostępniony w sieci wewnętrznej. Wszystkie urządzenia zostały skonfigurowane tak, aby połączyć się z Redisem za pomocą tego hasła. Niestety, nie zostało użyte szyfrowanie TLS. Redis został uruchomiony w kontenerze Dockera, w celu zapewnienia izolacji i~łatwości konfiguracji.

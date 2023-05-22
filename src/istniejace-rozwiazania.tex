@@ -3,12 +3,28 @@
 ---
 \section{LoRaWAN}
 ---
-\subsection{The Things Network ?}
+\section{The Things Network}
 ---
-\subsection{ChirpStack ?}
+\section{ChirpStack ?}
 ---
-\subsection{Loriot ?}
+\section{Loriot ?}
 ---
 \section{Artykuły}
----
+\subsection{\texttt{LoRaMesher}}
+Badacze w artykule zaproponowali otwartoźródłową implementację autorskiego protokołu \texttt{LoRaMesher}~\cite{bib:loramesher} w postaci darmowej biblioteki. Biblioteka ta pozwala na budowę sieci opartej o \texttt{LoRa} bez użycia bram. Autorzy zaimplementowali protokół w języku C++ z użyciem systemu FreeRTOS. Biblioteka została przetestowana na platformie \texttt{ESP32}.
+
+W artykule przedstawiono wyniki testów przeprowadzonych w rzeczywistych warunkach. Wiadomości były wysyłane co 120 sekund, a wiadomości routingowe co 300 sekund. Testy zostały przeprowadzone w trzech różnych scenariuszach:
+
+\begin{itemize}
+    \item Sieć złożona z 10 węzłów sieci, oddalone od siebie o jeden skok. W~takiej sieci wskaźnik dostarczenia pakietów wynosił 90\%.
+    \item Sieć złożona z 10 węzłów, ułożonych w łańcuch. W tym wypadku wskaźnik dostarczenia pakietów wynosił 96\%.
+    \item Sieć złożona z 10 węzłów, w tym 5 węzłów działało tylko jako przekaźniki. Architektura sieci symulowało zastosowanie biblioteki w prawdziwym zastosowaniem. W tym wypadku wskaźnik dostarczenia pakietów wynosił 86\%.
+\end{itemize}
+
+Wyniki testów pokazują, że biblioteka działa poprawnie i może być zastosowana w prawdziwych zastosowaniach. Jednak w artykule nie zostały przedstawione wyniki testów wydajnościowych, które mogłyby pokazać, jak dużo pakietów może być obsłużonych przez bibliotekę.
+
+W odróżnieniu od rozwiązania zaproponowanego w artykule, w projekcie została zaproponowane rozwiązanie wymagające jednokierunkowej komunikacji z węzłami sieci. Dzięki temu można zastosować węzły sieci o mniejszej wydajności, co pozwala zarówno na zmniejszenie kosztów projektu jaki działania węzłów na baterii.
+
+Biblioteka ta została również przygotowana z myślą o zastosowaniach, w których część działania logiki systemu odbywa się na węzłach sieci. W projekcie zastosowano rozwiązanie, w którym cała większego systemu jest zaimplementowana w stacji przekaźnikowej i aplikacji zapisującej do bazy danych. Dzięki temu można zastosować węzły sieci o mniejszej wydajności i zmniejsz poziom skomplikowania systemu. 
+
 \section{Wpisy w sieci i blogach}
