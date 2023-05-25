@@ -1,7 +1,21 @@
 
 \chapter{Wykorzystane narzędzia, technologie i~protokoły}
 
+\section{LoRa}
+LoRa (Long Range) to protokół komunikacji bezprzewodowej, stworzony z myślą o urządzeniach IoT. Przeznaczony jest do komunikacji na duże odległości, i z niskim zużyciem energii. Został opracowany przez Semtech w 2013 roku, stał się wtedy otwartym standardem. LoRa wykorzystuje zastrzeżoną technologię modulacji widma rozproszonego, która umożliwia daleki zasięg, przy ograniczonym zużyciu energii. Implementuje on warstwę fizyczną sieci.\cite{lora:about}
+
+Teoretyczny zasięg sieci LoRa wynosi około 15 km w terenie wiejskim i 2-5 km w terenie zurbanizowanym. W praktyce zasięg ten jest ograniczony przez wiele czynników, takich jak:
+\begin{itemize}
+    \item moc nadajnika
+    \item czułość odbiornika
+    \item przeszkody fizyczne
+    \item zakłócenia
+    \item wysokość anteny
+\end{itemize}
+Więcej na temat wydajności sieci można przeczytać w artykule ~\cite{bib:lora-performance}
+
 \section{Urządzenia wykorzystywane w~projekcie}
+
 \subsection{ESP32}
 ESP32 to jednoukładowy mikrokontroler, zaprojektowany i~produkowany przez firmę Espressif Systems. Jego najważniejsze cechy to:
 \begin{itemize}
@@ -51,27 +65,25 @@ Płytka ta jest często wykorzystywana przez hobbystów do różnych projektów 
 
 %  PROJECTS
 W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania danych.
-\subsection{STM32}
-STM32 to rodzina 32 bitowych mikrokonolerów produkowanych przez firmę STMicroelectronics. Bazują one na architekturze ARM Cortex-M, oferują wysoką wydajność i energooszczędność. Cztery główne rodzaje mikrokontrolerów STM32 to:
-\begin{itemize}
-    \item Rodzina płytek z~częścią kodu F(4/5) i H — overują największą wydajność
-    \item Rodzina płytek z~częścią kodu L — oferują największą energooszczędność
-    \item Rodzina płytek z~częścią kodu G/C/F(1/3) — do zastosowań ogólnych
-    \item Rodzina płytek z częścią kodu W(L/B/BA) — do zastosowań bezprzewodowych. [SRPAWDZIĆ]
-\end{itemize}\cite{STM32:overview}
-Głównym zastosowaniem STM32 są urządzenia wbudowane, w~tym urządzenia medyczne, roboty, samochody, a~także urządzenia IoT[NEED CITE]
-% -- PROJECTS
-\\
-W projekcie wykorzystano dwie płytki STM32WL55, które zostały wykorzystane jako część systemu zbierania danych.
+% \subsection{STM32}
+% STM32 to rodzina 32 bitowych mikrokontrolerów produkowanych przez firmę STMicroelectronics. Bazują one na architekturze ARM Cortex-M, oferują wysoką wydajność i energooszczędność. Cztery główne rodzaje mikrokontrolerów STM32 to:
+% \begin{itemize}
+%     \item Rodzina płytek z~częścią kodu F(4/5) i H — overują największą wydajność
+%     \item Rodzina płytek z~częścią kodu L — oferują największą energooszczędność
+%     \item Rodzina płytek z~częścią kodu G/C/F(1/3) — do zastosowań ogólnych
+%     \item Rodzina płytek z częścią kodu W(L/B/BA) — do zastosowań bezprzewodowych. [SRPAWDZIĆ]
+% \end{itemize}\cite{STM32:overview}
+% Głównym zastosowaniem STM32 są urządzenia wbudowane, w~tym urządzenia medyczne, roboty, samochody, a~także urządzenia IoT[NEED CITE]
+% % -- PROJECTS
+% \\
+% W projekcie wykorzystano dwie płytki STM32WL55, które zostały wykorzystane jako część systemu zbierania danych.
 
 
 \section{Języki programowania i technologie}
-\subsection{\texttt{C++} for Arduio}
----
-\subsection{\texttt{C} for STM32}
----
+% \subsection{\texttt{C++} for Arduio}
+% ---
 \subsection{\texttt{MicroPython} for Rasberry Pi Pico}
-MicroPython jest językiem 
+MicroPython to lekka~i wydajna implementacja języka Python 3, która została zaprojektowana~z myślą~o urządzeniach wbudowanych. Zawiera on okroją wersję biblioteki standardowej Pythona. MicroPython jest dostępny na wiele platform,~w tym na Rasberry Pi Pico.~\cite{PICO:micropython}
 
 \section{Bazy danych i pozostałe technologie}
 \subsection{InfluxDB 2}
@@ -82,8 +94,6 @@ MicroPython jest językiem
 ---
 \subsection{\texttt{MQTT}}
 ---
-\subsection{\texttt{LoRa}}
----
 \subsection{\texttt{HTTP}}
 ---
 \section{Bazy danych i pozostałe technologie}
@@ -92,4 +102,11 @@ MicroPython jest językiem
 \subsection{Docker}
 ---
 \subsection{PlatformIO}
----
+PlatformIO to narzędzie do tworzenia i~zarządzania projektami z~wykorzystaniem mikrokontrolerów. Pozwala ono na tworzenie projektów w~językach C i~C++. PlatformIO oferuje również możliwość zarządzania zależnościami projektu, zarządzania bibliotekami, a~także kompilację i~wgrywanie projektu na płytkę. Najważniejsza cechą jest możliwość tworzenia projektów dla wielu platform i z wykorzystaniem równych narzędzi, w~tym dla ESP32 i~Rasberry Pi Pico, będąc jednocześnie niezależnym od jednego producenta.~\cite{tool:pio}
+
+\begin{figure}[b!]
+    \begin{center}
+        \includegraphics[width=15cm]{pic/pio.jpg}
+    \end{center}
+    \caption{Interfejs narzędzia PlatformIO w edytorze Visual Studio Code}\label{rys:pio}
+\end{figure}

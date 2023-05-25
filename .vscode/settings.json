@@ -4,11 +4,13 @@
         "Dockera",
         "Espressif",
         "mikrokontrolerem",
+        "mikrokontrolery",
         "Mosquitto",
         "MQTT",
         "otwartoźródłowego",
         "paho",
         "TTGO",
+        "UART",
         "Waveshare"
     ],
     "cSpell.language": "pl,en"

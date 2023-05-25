@@ -26,7 +26,7 @@
 @online{ESP32:lora-lib,
   url = {https://github.com/sandeepmistry/arduino-LoRa},
   title = {arduino-LoRa},
-  author = {sandeepmistry},
+  % author = {sandeepmistry},
   year = 2023,
   urldate = {2023-04-16}
 }
@@ -34,7 +34,7 @@
 @online{ESP32:ArduinoJson,
   url     = {https://github.com/bblanchon/ArduinoJson},
   title   = {ArduinoJson},
-  author  = {bblanchon},
+  % author  = {bblanchon},
   year    = 2023,
   urldate = {2023-04-16}
 }
@@ -50,7 +50,7 @@
 @online{ESP32:ESPRandom,
   url     = {https://github.com/moritz89/ESPRandom},
   title   = {ESPRandom},
-  author  = {moritz89},
+  % author  = {moritz89},
   year    = 2023,
   urldate = {2023-04-16}
 }
@@ -84,10 +84,17 @@
   url     = {https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html},
   urldate = {2023-04-16}
 }
+@online{PICO:micropython,
+  url     = {https://micropython.org/},
+  title   = {MicroPython},
+  year    = 2023,
+  urldate = {2023-04-16}
+}
+
 @online{PICO:lora-lib,
   url = {https://github.com/ehong-tl/micropySX126X},
   title = {micropySX126X},
-  author = {ehong-tl},
+  % author = {ehong-tl},
   year = 2023,
   urldate = {2023-04-16}
 }
@@ -175,7 +182,6 @@
   title   = {Docker Documentation},
   year    = 2023,
   urldate = {2023-04-23}
-  
 }
 % --------------------
 % Articles
@@ -188,4 +194,60 @@
   number  = {},
   pages   = {113158-113171},
   doi     = {10.1109/ACCESS.2022.3217215}
+}
+
+@article{bib:loramesh-lee,
+  author  = {Lee, Huang-Chen and Ke, Kai-Hsiang},
+  journal = {IEEE Transactions on Instrumentation and Measurement},
+  title   = {Monitoring of Large-Area IoT Sensors Using a LoRa Wireless Mesh Network System: Design and Evaluation},
+  year    = {2018},
+  volume  = {67},
+  number  = {9},
+  pages   = {2177-2187},
+  doi     = {10.1109/TIM.2018.2814082}
+}
+
+
+@article{s21134314,
+  author         = {Berto, Riccardo and Napoletano, Paolo and Savi, Marco},
+  title          = {A LoRa-Based Mesh Network for Peer-to-Peer Long-Range Communication},
+  journal        = {Sensors},
+  volume         = {21},
+  year           = {2021},
+  number         = {13},
+  article-number = {4314},
+  url            = {https://www.mdpi.com/1424-8220/21/13/4314},
+  pubmedid       = {34202554},
+  issn           = {1424-8220},
+  abstract       = {LoRa is a long-range and low-power radio technology largely employed in Internet of Things (IoT) scenarios. It defines the lower physical layer while other protocols, such as LoRaWAN, define the upper layers of the network. A LoRaWAN network assumes a star topology where each of the nodes communicates with multiple gateways which, in turn, forward the collected data to a network server. The main LoRaWAN characteristic is the central role of the gateways; however, in some application scenarios, a much lighter protocol stack, relying only on node capabilities and without the presence of gateways, can be more suitable. In this paper, we present a preliminary study for realizing a LoRa-based mesh network, not relying on LoRaWAN, that implements a peer-to-peer communication between nodes, without the use of gateways, and extends node reachability through multi-hop communication. To validate our investigations, we present a hardware/software prototype based on low-power-consumption devices, and we preliminarily assess the proposed solution.},
+  doi            = {10.3390/s21134314}
+}
+
+
+@article{bib:lora-performance,
+  author         = {Sanchez-Iborra, Ramon and Sanchez-Gomez, Jesus and Ballesta-Viñas, Juan and Cano, Maria-Dolores and Skarmeta, Antonio F.},
+  title          = {Performance Evaluation of LoRa Considering Scenario Conditions},
+  journal        = {Sensors},
+  volume         = {18},
+  year           = {2018},
+  number         = {3},
+  article-number = {772},
+  url            = {https://www.mdpi.com/1424-8220/18/3/772},
+  pubmedid       = {29510524},
+  issn           = {1424-8220},
+  abstract       = {New verticals within the Internet of Things (IoT) paradigm such as smart cities, smart farming, or goods monitoring, among many others, are demanding strong requirements to the Radio Access Network (RAN) in terms of coverage, end-node’s power consumption, and scalability. The technologies employed so far to provide IoT scenarios with connectivity, e.g., wireless sensor network and cellular technologies, are not able to simultaneously cope with these three requirements. Thus, a novel solution known as Low Power - Wide Area Network (LP-WAN) has emerged as a promising alternative to provide with low-cost and low-power-consumption connectivity to end-nodes spread in a wide area. Concretely, the Long-Range Wide Area Network (LoRaWAN) technology is one of the LP-WAN platforms that is receiving greater attention from both the industry and the academia. For that reason, in this work, a comprehensive performance evaluation of LoRaWAN under different environmental conditions is presented. The results are obtained from three real scenarios, namely, urban, suburban, and rural, considering both dynamic and static conditions, hence a discussion about the most proper LoRaWAN physical-layer configuration for each scenario is provided. Besides, a theoretical coverage study is also conducted by the use of a radio planning tool considering topographic maps and a precise propagation model. From the attained results, it can be concluded that it is necessary to evaluate the propagation conditions of the deployment scenario prior to the system implantation in order to reach a compromise between the robustness of the network and the transmission data-rate.},
+  doi            = {10.3390/s18030772}
+}
+
+
+
+
+
+% --------------------
+% LoRa
+@online{lora:about,
+  url     = {https://lora-developers.semtech.com/documentation/tech-papers-and-guides/lora-and-lorawan},
+  author  = {Docker},
+  title   = {Docker Documentation},
+  urldate = {2023-04-23}
 }
