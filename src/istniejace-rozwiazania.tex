@@ -1,6 +1,8 @@
 \chapter{Istniejące rozwiązania}
 
 \section{LoRaWAN}
+LoRaWAN (ang. LoRa Wide Area Network) to protokół komunukacji stworzony przez \texttt{LoRa Alliance}~\cite{bib:lorawan}. Protokół ten został stworzony z myślą o zastosowaniach w sieciach \texttt{IoT}. Protokół ten jest oparty o protokół \texttt{LoRa} i pozwala na budowę sieci \texttt{LoRa} w oparciu o bramy. Węzły sieci komunikują się z bramami, a bramy przekazują dane do serwera. Serwer jest odpowiedzialny za przetworzenie danych i przekazanie ich do aplikacji użytkownika.
+
 \section{The Things Network}
 
 % \section{ChirpStack ?}
@@ -52,4 +54,3 @@ W podanym artykule~\cite{s21134314} badacze zaproponowali implementację sieci m
 Wyniki testów pokazują, że biblioteka działa poprawnie i może być zastosowana w prawdziwych aplikacjach. Jednak w artykule nie zostały przedstawione wyniki testów wydajnościowych, które mogłyby pokazać, jak dużo pakietów może być obsłużonych przez bibliotekę.
 
 Główną różnicą między tym rozwiązaniem a rozwiązaniem zaproponowanym w projekcie jest sposób komunikacji między węzłami sieci. W artykule zaproponowano architekturę bez stacji bazowej, więc by dane mogły być przetwarzane poza węzłami sieci, stację bazową należałoby stworzyć we własnym zakresie. Nie powinno być to trudne, ponieważ mikrokontrolery przesyłają odebrane pakiety przez interfejs UART, więc stacja bazowa mogłaby być zaimplementowana na komputerze PC.
-

@@ -85,22 +85,18 @@ W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania d
 \subsection{\texttt{MicroPython} for Rasberry Pi Pico}
 MicroPython to lekka~i wydajna implementacja języka Python 3, która została zaprojektowana~z myślą~o urządzeniach wbudowanych. Zawiera on okroją wersję biblioteki standardowej Pythona. MicroPython jest dostępny na wiele platform,~w tym na Rasberry Pi Pico.~\cite{PICO:micropython}
 
-\section{Bazy danych i pozostałe technologie}
-\subsection{InfluxDB 2}
----
-\subsection{\texttt{Python} for MQTT}
-
 \section{Protokoły komunikacyjne}
----
+
 \subsection{\texttt{MQTT}}
----
-\subsection{\texttt{HTTP}}
----
+MQTT(MQ Telemetry Transport) to lekki protokół przesyłania wiadomości, często wykorzystywany w IoT, gdzie ważna jest energooszczędność. Oparty jest o model publish/subscribe. Oznacza to zorganizowanie wiadomości w tematy, a klienci mogą subskrybować określone przez siebie tematy, aby otrzymywać odpowiednie wiadomości. Zapewnia to wydają komunikację przy małym obciążeniu systemu.~\cite{protocol:mqtt}
+
 \section{Bazy danych i pozostałe technologie}
 \subsection{InfluxDB 2}
----
+InfluxDB 2 to baza danych szeregów czasowych, stworzona przez InfluxData, Została napisana w języku Go. Wykorzystywana jest do zbierania danych z, między innymi urządzeń IoT, metryk aplikacji, monitoringu infrastruktury IT.~\cite{tool:influxdb}
+
 \subsection{Docker}
----
+Docker to narzędzie do wirtualizacji na poziomie systemu operacyjnego. Pozwala ono na uruchamianie aplikacji w~kontenerach, które są odizolowane od siebie i~od systemu operacyjnego. Kontenery są lżejsze od wirtualnych maszyn, ponieważ nie muszą zawierać systemu operacyjnego, a~tylko potrzebne do działania aplikacji biblioteki i~pliki.~\cite{tool:docker}
+
 \subsection{PlatformIO}
 PlatformIO to narzędzie do tworzenia i~zarządzania projektami z~wykorzystaniem mikrokontrolerów. Pozwala ono na tworzenie projektów w~językach C i~C++. PlatformIO oferuje również możliwość zarządzania zależnościami projektu, zarządzania bibliotekami, a~także kompilację i~wgrywanie projektu na płytkę. Najważniejsza cechą jest możliwość tworzenia projektów dla wielu platform i z wykorzystaniem równych narzędzi, w~tym dla ESP32 i~Rasberry Pi Pico, będąc jednocześnie niezależnym od jednego producenta.~\cite{tool:pio}
 
