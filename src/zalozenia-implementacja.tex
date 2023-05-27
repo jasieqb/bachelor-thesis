@@ -55,7 +55,7 @@ Każda z wiadomości przesyłanych za pomocą tych sieci powinna mieć formę ja
 Zawiera ona pola:
 \begin{itemize}
     \item \texttt{ttl} — [Ang. time to live — czas życia] Wartość określająca maksymalną liczbę skoków pomiędzy węzłami sieci. Domyślnie wynosi 10, może zostać wydłużona w zależności od wielkości planowanej sieci
-    \item \texttt{m\_id} — UUID \cite{RFC:uuid} wiadomości, gwarantujący niepowtarzalności tej wiadomości. Ułatwia również jej dalsze przetwarzanie
+    \item \texttt{m\_id} — UUID~\cite{RFC:uuid} wiadomości, gwarantujący niepowtarzalności tej wiadomości. Ułatwia również jej dalsze przetwarzanie
     \item \texttt{d\_id} — numer identyfikacyjny urządzenia z którego pochodzi wiadomość
     \item \texttt{values} — słownik zawierający dane z urządzenia, do zapisania w bazie
 \end{itemize}
@@ -97,9 +97,9 @@ Przekaźnik odbiera wiadomości, i przesyła je do brokera wiadomości. Nie spra
 Program pobiera kolejne wiadomości od brokera i przetwarza je w kolejności:
 \begin{enumerate}
     \item Sprawdzenie poprawności wiadomości
-    \item \label{itm:powtorki} Sprawdzenie czy wiadomość nie została już sprawdzona (na podstawie pola \texttt{m\_id})
+    \item\label{itm:powtorki} Sprawdzenie czy wiadomość nie została już sprawdzona (na podstawie pola \texttt{m\_id})
     \item Zapisanie danych ze słownika \texttt{values} do bazy danych i przyporządkowanie ich do \texttt{d\_id}, oznaczenie ich znacznikiem czasowym.
-    \item Zapisanie w pamięci operacyjnej \texttt{m\_id}, potem do wykorzystania w~kroku \ref{itm:powtorki}
+    \item Zapisanie w pamięci operacyjnej \texttt{m\_id}, potem do wykorzystania w~kroku~\ref{itm:powtorki}
 \end{enumerate}
 Baza danych powinna przechowywać dane, takie jak:
 \begin{itemize}
@@ -120,13 +120,13 @@ W wyniku pracy nad systemem zbierania danych przygotowano implementację węzł�
 \end{itemize}
 
 \subsubsection{Rasberry Pi Pico}
+
 W wyniku pracy nad systemem zostały przygotowane dwa, identyczne urządzenia oparte o Raspberry Pi Pico. Urządzenie zostało wyposażone w moduł LoRa SX1262~\cite{PICO:sx1262-doc}(z wykorzystaniem płytki rozwojowej \texttt{Waveshare SX1262 LoRa Node Module}~\cite{PICO:waveshare-doc}) oraz czujnik temperatury i wilgotności DHT11. Urządzenie zostało zaprogramowane w języku MicroPython z wykorzystaniem biblioteki \texttt{micropySX126X}~\cite{PICO:lora-lib}. Urządzenie wysyła wiadomości zawierające odczyty z czujnika co 5 minut. Wysyłanie wiadomości odbywa się w sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w tym czasie.
 
 \subsubsection{TTGO LoRa32}
 W wyniku pracy nad systemem zostało przygotowane jedno urządzenie oparte o~TTGO LoRa32. Urządzenie zostało wyposażone w moduł LoRa SX1276~\cite{ESP32:sx1276-doc}. Urządzenie zostało zaprogramowane w języku C++ z użyciem PlatformIO, ekosystemu do programowania urządzeń IoT.~\cite{tool:pio}. W programie została wykorzystane biblioteki:
 \begin{itemize}
-    \item \texttt{arduino-LoRa} — biblioteka do obsługi modułu LoRa
-          ~\cite{ESP32:lora-lib}
+    \item \texttt{arduino-LoRa} — biblioteka do obsługi modułu LoRa~\cite{ESP32:lora-lib}
     \item \texttt{ArduinoJson} — biblioteka do obsługi formatu JSON~\cite{ESP32:ArduinoJson}
     \item \texttt{Adafruit-SSD1306} — biblioteka do obsługi wyświetlacza~\cite{ESP32:Adafruit-SSD1306} OLED
     \item \texttt{ESPRandom} — biblioteka do obsługi sprzętowego generatora liczb pseudolosowych~\cite{ESP32:ESPRandom}

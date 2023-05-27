@@ -6,7 +6,7 @@ System został wdrożony 1 maja 2023 roku. Wdrożenie polegało na uruchomieniu 
 \subsection{Węzły sieci}
 % Węzły sieci zostały umieszczone w trzech różnych miejscach w Lublinie. Pierwszy z nich został umieszczony na dachu budynku Wydziału Matematyki, Fizyki i Informatyki UMCS. Drugi został umieszczony na dachu budynku Wydziału Elektrotechniki i Informatyki Politechniki Lubelskiej. Trzeci został umieszczony na dachu budynku Wydziału Informatyki Politechniki Lubelskiej. Wszystkie urządzenia zostały umieszczone na wysokości 20 metrów nad poziomem gruntu. Wszystkie urządzenia zostały umieszczone na zewnątrz, w~specjalnych obudowach, które zapewniają ochronę przed warunkami atmosferycznymi. Wszystkie urządzenia zostały zasilone z sieci elektrycznej.
 
-Trzy węzły sieci zostały rozmieszczone na małym obszarze, około 30 metrów od siebie, w dwóch budynkach. Dwa urządzenia (jedno Raspberry Pi Pico i jedno TTGO LoRa32) zasilane są z sieci, jedno za pomocą baterii. Urządzenia zostały połączone z czujnikami za pomocą zwykłych kabli prototypowych, jak na zdjęciu~\ref{rys:wezel1} i ~\ref{rys:wezel2}. Przykład urządzenia wykorzystującego wbudowane czujniki został zaprezentowany na zdjęciu~\ref{rys:wezel2}
+Trzy węzły sieci zostały rozmieszczone na małym obszarze, około 30 metrów od siebie, w dwóch budynkach. Dwa urządzenia (jedno Raspberry Pi Pico i jedno TTGO LoRa32) zasilane są z sieci, jedno za pomocą baterii. Urządzenia zostały połączone z czujnikami za pomocą zwykłych kabli prototypowych, jak na zdjęciu~\ref{rys:wezel1} i~\ref{rys:wezel2}. Przykład urządzenia wykorzystującego wbudowane czujniki został zaprezentowany na zdjęciu~\ref{rys:wezel2}
 
 \begin{figure}[b!]
     \begin{center}
@@ -50,13 +50,13 @@ Na serwerze testowy zostały uruchomione wszystkie usługi, które zostały wyko
     \item Program zapisujący do InfluxDB 2
     \item Redis
 \end{itemize}
-Serwer został uruchomiony na maszynie wewnątrz budynku, w sieci lokalnej. Na serwerze został uruchomiony system operacyjny Debian 11. Maszyna została wyposażona w procesor Intel Core i5-480M, 2 GB pamięci RAM oraz dysk SSD o pojemności 256 GB. Wszystkie usługi zostały uruchomione w kontenerach Dockera~\cite{tools:docker}. Wszystkie usługi zostały uruchomione w jednej sieci Dockera, w celu zapewnienia komunikacji między nimi.
+Serwer został uruchomiony na maszynie wewnątrz budynku, w sieci lokalnej. Na serwerze został uruchomiony system operacyjny Debian 11. Maszyna została wyposażona w procesor Intel Core i5-480M, 2 GB pamięci RAM oraz dysk SSD o pojemności 256 GB. Wszystkie usługi zostały uruchomione w kontenerach Dockera~\cite{tool:docker}. Wszystkie usługi zostały uruchomione w jednej sieci Dockera, w celu zapewnienia komunikacji między nimi.
 
 \subsection{Broker wiadomości}
 Broker wiadomości został uruchomiony na wspólnym serwerze wewnątrz budynku. Broker został zabezpieczony hasłem, które zostało zapisane w pliku konfiguracyjnym. Wszystkie urządzenia zostały skonfigurowane tak, aby połączyć się z brokerem za pomocą tego hasła. Niestety, nie zostało użyte szyfrowanie TLS.
 
 \subsection{Baza danych i program zapisujący dane}
-Baza danych wraz z programem zapisującym dane zostały uruchomione na wspólnym serwerze wewnątrz budynku. Baza danych została zabezpieczona tokenem dostępu, który został zapisany w pliku konfiguracyjnym. Wszystkie urządzenia zostały skonfigurowane tak, aby połączyć się z bazą danych za pomocą tego tokenu. Niestety, nie zostało użyte szyfrowanie TLS. Zarówno baza danych, jak i program zapisujący dane zostały uruchomione w kontenerach Dockera, w celu zapewnienia izolacji i~łatwości konfiguracji. Na rysunku \ref{rys:influxdb-web} został przedstawiony zrzut ekranu interfejsu użytkownika InfluxDB 2. Na rysunku \ref{rys:logi-connector} został przedstawiony zrzut ekranu zawierający logi programu zapisującego pomiary do bazy InfluxDB 2.
+Baza danych wraz z programem zapisującym dane zostały uruchomione na wspólnym serwerze wewnątrz budynku. Baza danych została zabezpieczona tokenem dostępu, który został zapisany w pliku konfiguracyjnym. Wszystkie urządzenia zostały skonfigurowane tak, aby połączyć się z bazą danych za pomocą tego tokenu. Niestety, nie zostało użyte szyfrowanie TLS. Zarówno baza danych, jak i program zapisujący dane zostały uruchomione w kontenerach Dockera, w celu zapewnienia izolacji i~łatwości konfiguracji. Na rysunku~\ref{rys:influxdb-web} został przedstawiony zrzut ekranu interfejsu użytkownika InfluxDB 2. Na rysunku~\ref{rys:logi-connector} został przedstawiony zrzut ekranu zawierający logi programu zapisującego pomiary do bazy InfluxDB 2.
 
 \begin{figure}[b!]
     \begin{center}
