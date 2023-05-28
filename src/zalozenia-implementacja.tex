@@ -64,6 +64,7 @@ Zawiera ona pola:
 \begin{lstfloat}[h!]
     % \begin{lstfloat}[b!]
     \lstset{language=JavaScript}
+    % \lstset{}
     \begin{lstlisting}[frame=single]
 {
     "d_id": "id_233",
@@ -100,7 +101,7 @@ Nie sprawdza poprawności wiadomości by, zapewnić maksymalną wydajność i~ni
 Program pobiera kolejne wiadomości od brokera i~przetwarza je w~kolejności:
 \begin{enumerate}
     \item Sprawdzenie poprawności wiadomości
-    \item\label{itm:powtorki} Sprawdzenie czy wiadomość nie została już sprawdzona (na podstawie pola \texttt{m\_id})
+          \item\label{itm:powtorki} Sprawdzenie czy wiadomość nie została już sprawdzona (na podstawie pola \texttt{m\_id})
     \item Zapisanie danych ze słownika \texttt{values} do bazy danych i~przyporządkowanie ich do \texttt{d\_id}, oznaczenie ich znacznikiem czasowym.
     \item Zapisanie w pamięci operacyjnej \texttt{m\_id}, potem do wykorzystania w~kroku~\ref{itm:powtorki}
 \end{enumerate}
