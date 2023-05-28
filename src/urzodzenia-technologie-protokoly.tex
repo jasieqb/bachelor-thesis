@@ -1,8 +1,8 @@
 
 \chapter{Wykorzystane narzędzia, technologie i~protokoły}
 
-\section{LoRa}
-LoRa (Long Range) to protokół komunikacji bezprzewodowej, stworzony z myślą o~urządzeniach IoT.
+\section{Technologia LoRa}
+LoRa (ang. \emph{Long Range} — daleki zasięg) to protokół komunikacji bezprzewodowej, stworzony z myślą o~urządzeniach IoT (ang. \emph{Internet of Things} — Internet rzeczy).
 Przeznaczony jest do komunikacji na duże odległości i~z~niskim zużyciem energii.
 Został opracowany przez Semtech w 2013 roku, stał się wtedy otwartym standardem.
 LoRa wykorzystuje zastrzeżoną technologię modulacji widma rozproszonego, która umożliwia daleki zasięg, przy ograniczonym zużyciu energii.
@@ -11,42 +11,45 @@ Implementuje on warstwę fizyczną sieci~\cite{lora:about}.
 Teoretyczny zasięg sieci LoRa wynosi około 15 km w terenie wiejskim i 2--5 km w terenie zurbanizowanym.
 W praktyce zasięg ten jest ograniczony przez wiele czynników, takich jak:
 \begin{itemize}
-    \item moc nadajnika
-    \item czułość odbiornika
-    \item przeszkody fizyczne
-    \item zakłócenia
-    \item wysokość anteny
+    \item moc nadajnika,
+    \item czułość odbiornika,
+    \item przeszkody fizyczne,
+    \item zakłócenia,
+    \item wysokość anteny.
 \end{itemize}
+
+
 Więcej na temat wydajności sieci można przeczytać w~artykule~\cite{bib:lora-performance}.
 
 \section{Urządzenia wykorzystywane w~projekcie}
 
+W tym podrozdziale zostaną opisane urządzenia wykorzystane w~projekcie, w~tym ich najważniejsze cechy.
+
 \subsection{ESP32}
 ESP32 to jednoukładowy mikrokontroler, zaprojektowany i~produkowany przez firmę Espressif Systems.
-Jego najważniejsze cechy to:
+Jego najważniejsze cechy to~\cite{ESP32:datasheet}:
 \begin{itemize}
-    \item energooszczędny procesor RISC o częstotliwości do 240 MHz
-    \item 520 kB pamięci SRAM
-    \item WiFi 802.11 b/g/n
-    \item Bluetooth
-    \item liczne interfejsy cyfrowe i analogowe, w~tym:
-          \begin{itemize}
-              \item UART
-              \item I2C
-              \item SPI
-              \item I2S
-              \item CAN
-              \item ADC
-              \item DAC
-              \item PWM
-              \item Ethernet MAC
-              \item USB 2.0
-          \end{itemize}
-    \item \dots
+    \item energooszczędny procesor RISC o częstotliwości do 240 MHz,
+    \item 520 kB pamięci SRAM,
+    \item WiFi 802.11 b/g/n,
+    \item Bluetooth,
+    \item liczne interfejsy cyfrowe i analogowe.
+          %       \begin{itemize}
+          %           \item UART
+          %           \item I2C
+          %           \item SPI
+          %           \item I2S
+          %           \item CAN
+          %           \item ADC
+          %           \item DAC
+          %           \item PWM
+          %           \item Ethernet MAC
+          %           \item USB 2.0
+          %       \end{itemize}
           % \item 32 MB pamięci flash
-\end{itemize} \cite{ESP32:datasheet}
+\end{itemize}
 
-Powstało wiele wersji tego układu, różniące się m.in. szybkością procesora, wielkością pamięci flash, ilością pinów, interfejsów cyfrowych i~analogowych, a~także możliwością pracy w trybie bezprzewodowym (WiFi) lub przewodowym (Ethernet)~\cite{ESP32:socs}.
+Powstało wiele wersji tego układu, różniące się m.in. szybkością procesora, wielkością pamięci flash, ilością pinów, interfejsów cyfrowych i~analogowych, a~także możliwością pracy w trybie bezprzewodowym lub przewodowym~\cite{ESP32:socs}.
 Najczęściej układ te wykorzystywane różnych projektach IoT, zarówno jako czujniki, jak i~serwery~\cite{ESP32:datasheet}.
 
 
@@ -59,17 +62,17 @@ Jedna z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią 
 
 Raspberry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produkowany przez firmę Raspberry Pi Foundation.
 Charakteryzuje się ona dwurdzeniowym procesorem ARM Cortex-M0+ o~częstotliwości 133 MHz, 264 kB pamięci SRAM oraz 2 MB pamięci flash.
-Płytka posiada również wiele interfejsów cyfrowych i~analogowych, w~tym:
-\begin{itemize}
-    \item UART
-    \item I2C
-    \item SPI
-    \item I2S
-    \item ADC
-    \item DAC
-    \item PWM
-    \item USB 1.1
-\end{itemize}~\cite{PICO:datasheet,PICO:doc}
+Płytka posiada również wiele interfejsów cyfrowych i~analogowych~\cite{PICO:datasheet}.
+% \begin{itemize}
+%     \item UART
+%     \item I2C
+%     \item SPI
+%     \item I2S
+%     \item ADC
+%     \item DAC
+%     \item PWM
+%     \item USB 1.1
+% \end{itemize}~\cite{PICO:datasheet,PICO:doc}
 Płytka ta jest często wykorzystywana przez hobbystów do różnych projektów IoT, a~także jako sterownik silników, czy kontroler robotów\cite{PICO:doc}.
 
 %  PROJECTS
@@ -88,19 +91,18 @@ W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania d
 % W projekcie wykorzystano dwie płytki STM32WL55, które zostały wykorzystane jako część systemu zbierania danych.
 
 
-\section{Języki programowania i technologie}
+% \section{Języki programowania i technologie}
 % \subsection{\texttt{C++} for Arduio}
 % ---
-\subsection{\texttt{MicroPython} for Raspberry Pi Pico}
+\section{MicroPython for Raspberry Pi Pico}
 MicroPython to lekka~i wydajna implementacja języka Python 3, która została zaprojektowana~z myślą~o urządzeniach wbudowanych.
 Zawiera on okrojoną wersję biblioteki standardowej Pythona.
 MicroPython jest dostępny na wiele platform,~w tym na Raspberry Pi Pico~\cite{PICO:micropython}.
 
-\section{Protokoły komunikacyjne}
+\section{Protokoły komunikacyjne: MQTT}
 
-\subsection{\texttt{MQTT}}
-MQTT (MQ Telemetry Transport) to lekki protokół przesyłania wiadomości, często wykorzystywany w IoT, gdzie ważna jest energooszczędność.
-Oparty jest o model publish/subscribe.
+MQTT (ang. \emph{MQ Telemetry Transport}) to lekki protokół przesyłania wiadomości, często wykorzystywany w IoT, gdzie ważna jest energooszczędność.
+Oparty jest o model \emph{publish/subscribe}.
 Oznacza to zorganizowanie wiadomości w tematy, a klienci mogą subskrybować określone przez siebie tematy, aby otrzymywać odpowiednie wiadomości.
 Zapewnia to wydają komunikację przy małym obciążeniu systemu~\cite{protocol:mqtt}.
 
@@ -112,7 +114,7 @@ Wykorzystywana jest do zbierania danych z~, między innymi, urządzeń IoT, metr
 \subsection{Docker}
 Docker to narzędzie do wirtualizacji na poziomie systemu operacyjnego.
 Pozwala ono na uruchamianie aplikacji w~kontenerach, które są odizolowane od siebie i~od systemu operacyjnego.
-Kontenery są lżejsze od wirtualnych maszyn, ponieważ nie muszą zawierać systemu operacyjnego, a~tylko potrzebne do działania aplikacji biblioteki i~pliki~\cite{tool:docker}.
+Kontenery mniej obciążają pamięć i procesor od wirtualnych maszyn, ponieważ nie muszą zawierać systemu operacyjnego, a~tylko potrzebne do działania aplikacji biblioteki i~pliki~\cite{tool:docker}.
 
 \subsection{PlatformIO}
 PlatformIO to narzędzie do tworzenia i~zarządzania projektami z~wykorzystaniem mikrokontrolerów.

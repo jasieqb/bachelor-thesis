@@ -16,7 +16,7 @@ W~takiej sytuacji można zastosować algorytm, który będzie sprawdzał, czy w~
 Jeśli nie, to węzeł sieci będzie wysyłał pakiety w~dłuższych odstępach czasu.
 Dzięki temu można zaoszczędzić energię węzłów sieci.
 
-\subsubsection{Uśpienie węzłów sieci}
+\subsubsection{Usypianie węzłów sieci}
 
 Wiele mikrokontrolerów posiada funkcjonalność głębokiego uśpienia.
 W~takim trybie mikrokontroler zużywa bardzo mało energii.
@@ -25,7 +25,7 @@ Należałoby rozpoznać czy tryby uśpienia zaproponowanych przez producentów m
 Jeśli tak, to można zastosować tryby uśpienia w~węzłach sieci, które nie będą wysyłały pakietów przez dłuższy czas.
 
 \subsubsection*{Większa bateria}
-W celu wydłużenia czasu działania węzłów sieci można również zastosować większe baterie. Wydłużyłoby to czas pracy na baterii.
+W celu wydłużenia czasu działania węzłów sieci można również zastosować większe baterie. Wydłużyłoby to nieprzerwany czas pracy na baterii.
 
 \subsubsection*{Zastosowanie innych technologii}
 W~celu optymalizacji energetycznej węzłów sieci można również zastosować inne technologie do oprogramowania węzłów sieci.
@@ -41,13 +41,13 @@ Dzięki temu można zwiększyć wydajność węzłów sieci przy jednoczesnej zw
 W~obecnej wersji systemu węzły sieci nie są autoryzowane.
 W~takiej sytuacji każdy węzeł sieci może dołączyć do sieci i~wysyłać pakiety.
 Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność autoryzacji węzłów sieci.
-W~takiej sytuacji węzły sieci będą musiały autoryzować się przed dołączeniem do sieci.
-Dzięki temu można zwiększyć bezpieczeństwo systemu.
+Węzły sieci będą musiały autoryzować się przed dołączeniem do sieci.
+Dzięki temu można zwiększyć wtedy bezpieczeństwo systemu.
 
 \subsubsection{Szyfrowanie wiadomości}
 W~obecnej wersji systemu wiadomości wysyłane przez węzły sieci nie są szyfrowane.
 Biorąc pod uwagę specyfikę protokołu LoRa wiadomości są rozgłaszane w formie broadcastu, więc mogą zostać odebrane przez dowolne urządzenie.
-Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność szyfrowania wiadomości.
+W~przyszłości można rozwinąć projekt o~funkcjonalność szyfrowania wiadomości.
 W~takiej sytuacji węzły sieci będą szyfrowały wiadomości przed wysłaniem ich do stacji przekaźnikowej.
 Następnie stacja przekaźnikowa będzie odszyfrowywała wiadomości przed przekazaniem ich do brokera wiadomości.
 Dzięki temu można zwiększyć bezpieczeństwo systemu.
@@ -80,12 +80,12 @@ Dzięki temu można zwiększyć uniwersalność systemu.
 \section{Dalsze badania}
 
 \subsection{Badania wydajnościowe dużej sieci}
-W~trakcie pracy nad projektem zostały przeprowadzone testy wydajnościowe małej sieci (3 węzły).
+W~trakcie pracy nad projektem zostały przeprowadzone testy wydajnościowe bardzo małej sieci (trzy węzły).
 Jednak powinny zostać przeprowadzone badania wydajnościowe dużej sieci.
 W~takiej sytuacji można przetestować wydajność systemu w~sytuacji, gdy w~sieci znajduje się dużo węzłów sieci na znacznej powierzchni.
 Dzięki temu można sprawdzić, czy system jest w~stanie obsłużyć dużą liczbę węzłów.
 
-\subsection{Badania konsumpcji energii}
+\subsection{Badania zużycia energii}
 W~trakcie przyszłych prac nad projektem należałoby przeprowadzić badania konsumpcji energii węzłów sieci.
 W~takiej sytuacji można sprawdzić, jak długo węzły sieci mogą działać na baterii.
 Należałoby również zoptymalizować zużycie energii węzłów sieci.
