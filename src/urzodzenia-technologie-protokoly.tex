@@ -1,6 +1,6 @@
 
 \chapter{Wykorzystane narzędzia, technologie i~protokoły}
-
+W tym rozdziale zostaną opisane narzędzia, technologie i~protokoły wykorzystane w~projekcie.
 \section{Technologia LoRa}
 LoRa (ang. \emph{Long Range} — daleki zasięg) to protokół komunikacji bezprzewodowej, stworzony z myślą o~urządzeniach IoT (ang. \emph{Internet of Things} — Internet rzeczy).
 Przeznaczony jest do komunikacji na duże odległości i~z~niskim zużyciem energii.
@@ -33,7 +33,7 @@ Jego najważniejsze cechy to~\cite{ESP32:datasheet}:
     \item 520 kB pamięci SRAM,
     \item WiFi 802.11 b/g/n,
     \item Bluetooth,
-    \item liczne interfejsy cyfrowe i analogowe.
+    \item liczne interfejsy cyfrowe i analogowe (takie jak: UART, I2C, SPI, I2S, CAN, ADC, DAC, PWM, USB 2.0).
           %       \begin{itemize}
           %           \item UART
           %           \item I2C
@@ -62,7 +62,7 @@ Jedna z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią 
 
 Raspberry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produkowany przez firmę Raspberry Pi Foundation.
 Charakteryzuje się ona dwurdzeniowym procesorem ARM Cortex-M0+ o~częstotliwości 133 MHz, 264 kB pamięci SRAM oraz 2 MB pamięci flash.
-Płytka posiada również wiele interfejsów cyfrowych i~analogowych~\cite{PICO:datasheet}.
+Płytka posiada również wiele interfejsów cyfrowych i~analogowych (takich jak: UART, I2C, SPI, I2S, ADC, DAC, PWM, USB 1.1)~\cite{PICO:datasheet}.
 % \begin{itemize}
 %     \item UART
 %     \item I2C
@@ -124,7 +124,7 @@ Najważniejszą cechą jest możliwość tworzenia projektów dla wielu platform
 
 \begin{figure}[b!]
     \begin{center}
-        \includegraphics[width=15cm]{pic/pio.jpg}
+        \includegraphics[angle=90, width=10cm]{pic/pio.jpg}
     \end{center}
     \caption{Interfejs narzędzia PlatformIO w edytorze Visual Studio Code}\label{fig:pio}
 \end{figure}
