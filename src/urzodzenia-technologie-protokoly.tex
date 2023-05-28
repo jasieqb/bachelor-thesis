@@ -17,7 +17,7 @@ W praktyce zasięg ten jest ograniczony przez wiele czynników, takich jak:
     \item zakłócenia
     \item wysokość anteny
 \end{itemize}
-Więcej na temat wydajności sieci można przeczytać w artykule~\cite{bib:lora-performance}.
+Więcej na temat wydajności sieci można przeczytać w~artykule~\cite{bib:lora-performance}.
 
 \section{Urządzenia wykorzystywane w~projekcie}
 
@@ -44,18 +44,22 @@ Jego najważniejsze cechy to:
           \end{itemize}
     \item \dots
           % \item 32 MB pamięci flash
-\end{itemize} \cite{ESP32:datasheet} \\
-Powstało wiele wersji tego układu, rózniące się m.in. szybkością procesora, wielkością pamięci flash, ilością pinów, interfejsów cyfrowych i analogowych, a także możliwością pracy w trybie bezprzewodowym (WiFi) lub przewodowym (Ethernet)~\cite{ESP32:socs}.
+\end{itemize} \cite{ESP32:datasheet}
+
+Powstało wiele wersji tego układu, różniące się m.in. szybkością procesora, wielkością pamięci flash, ilością pinów, interfejsów cyfrowych i~analogowych, a~także możliwością pracy w trybie bezprzewodowym (WiFi) lub przewodowym (Ethernet)~\cite{ESP32:socs}.
 Najczęściej układ te wykorzystywane różnych projektach IoT, zarówno jako czujniki, jak i~serwery~\cite{ESP32:datasheet}.
 
 
 %  PROJECTS
-W projekcie ESP32 zostało wykorzystane w dwóch płytkach TTGO T3 V1.6.1. Jedna z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią LoRa a~siecią WiFi, a druga jako cześć systemu zbierania danych z wykorzystaniem LoRa
+W projekcie ESP32 zostało wykorzystane w dwóch płytkach TTGO T3 V1.6.1.
+Jedna z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią LoRa a~siecią WiFi, a druga jako cześć systemu zbierania danych z wykorzystaniem LoRa.
 
 
-\subsection{Rasberry Pi Pico}
+\subsection{Raspberry Pi Pico}
 
-Rasbperry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produkowany przez firmę Raspberry Pi Foundation. Charakteryzuje się ona dwurdzeniowym procesorem ARM Cortex-M0+ o częstotliwości 133 MHz, 264 kB pamięci SRAM oraz 2 MB pamięci flash. Płytka posiada również wiele interfejsów cyfrowych i analogowych, w~tym:
+Raspberry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produkowany przez firmę Raspberry Pi Foundation.
+Charakteryzuje się ona dwurdzeniowym procesorem ARM Cortex-M0+ o~częstotliwości 133 MHz, 264 kB pamięci SRAM oraz 2 MB pamięci flash.
+Płytka posiada również wiele interfejsów cyfrowych i~analogowych, w~tym:
 \begin{itemize}
     \item UART
     \item I2C
@@ -66,7 +70,7 @@ Rasbperry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produko
     \item PWM
     \item USB 1.1
 \end{itemize}~\cite{PICO:datasheet,PICO:doc}
-Płytka ta jest często wykorzystywana przez hobbystów do różnych projektów IoT, a także jako sterownik silników, czy kontroler robotów.\cite{PICO:doc}
+Płytka ta jest często wykorzystywana przez hobbystów do różnych projektów IoT, a~także jako sterownik silników, czy kontroler robotów\cite{PICO:doc}.
 
 %  PROJECTS
 W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania danych.
@@ -88,26 +92,37 @@ W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania d
 % \subsection{\texttt{C++} for Arduio}
 % ---
 \subsection{\texttt{MicroPython} for Raspberry Pi Pico}
-MicroPython to lekka~i wydajna implementacja języka Python 3, która została zaprojektowana~z myślą~o urządzeniach wbudowanych. Zawiera on okroją wersję biblioteki standardowej Pythona. MicroPython jest dostępny na wiele platform,~w tym na Raspberry Pi Pico.~\cite{PICO:micropython}
+MicroPython to lekka~i wydajna implementacja języka Python 3, która została zaprojektowana~z myślą~o urządzeniach wbudowanych.
+Zawiera on okrojoną wersję biblioteki standardowej Pythona.
+MicroPython jest dostępny na wiele platform,~w tym na Raspberry Pi Pico~\cite{PICO:micropython}.
 
 \section{Protokoły komunikacyjne}
 
 \subsection{\texttt{MQTT}}
-MQTT(MQ Telemetry Transport) to lekki protokół przesyłania wiadomości, często wykorzystywany w IoT, gdzie ważna jest energooszczędność. Oparty jest o model publish/subscribe. Oznacza to zorganizowanie wiadomości w tematy, a klienci mogą subskrybować określone przez siebie tematy, aby otrzymywać odpowiednie wiadomości. Zapewnia to wydają komunikację przy małym obciążeniu systemu.~\cite{protocol:mqtt}
+MQTT (MQ Telemetry Transport) to lekki protokół przesyłania wiadomości, często wykorzystywany w IoT, gdzie ważna jest energooszczędność.
+Oparty jest o model publish/subscribe.
+Oznacza to zorganizowanie wiadomości w tematy, a klienci mogą subskrybować określone przez siebie tematy, aby otrzymywać odpowiednie wiadomości.
+Zapewnia to wydają komunikację przy małym obciążeniu systemu~\cite{protocol:mqtt}.
 
 \section{Bazy danych i pozostałe technologie}
 \subsection{InfluxDB 2}
-InfluxDB 2 to baza danych szeregów czasowych, stworzona przez InfluxData, Została napisana w języku Go. Wykorzystywana jest do zbierania danych z, między innymi urządzeń IoT, metryk aplikacji, monitoringu infrastruktury IT.~\cite{tool:influxdb}
+InfluxDB 2 to baza danych szeregów czasowych, stworzona przez InfluxData, Została napisana w języku Go.
+Wykorzystywana jest do zbierania danych z~, między innymi, urządzeń IoT, metryk aplikacji, monitoringu infrastruktury IT~\cite{tool:influxdb}.
 
 \subsection{Docker}
-Docker to narzędzie do wirtualizacji na poziomie systemu operacyjnego. Pozwala ono na uruchamianie aplikacji w~kontenerach, które są odizolowane od siebie i~od systemu operacyjnego. Kontenery są lżejsze od wirtualnych maszyn, ponieważ nie muszą zawierać systemu operacyjnego, a~tylko potrzebne do działania aplikacji biblioteki i~pliki.~\cite{tool:docker}
+Docker to narzędzie do wirtualizacji na poziomie systemu operacyjnego.
+Pozwala ono na uruchamianie aplikacji w~kontenerach, które są odizolowane od siebie i~od systemu operacyjnego.
+Kontenery są lżejsze od wirtualnych maszyn, ponieważ nie muszą zawierać systemu operacyjnego, a~tylko potrzebne do działania aplikacji biblioteki i~pliki~\cite{tool:docker}.
 
 \subsection{PlatformIO}
-PlatformIO to narzędzie do tworzenia i~zarządzania projektami z~wykorzystaniem mikrokontrolerów. Pozwala ono na tworzenie projektów w~językach C i~C++. PlatformIO oferuje również możliwość zarządzania zależnościami projektu, zarządzania bibliotekami, a~także kompilację i~wgrywanie projektu na płytkę. Najważniejsza cechą jest możliwość tworzenia projektów dla wielu platform i z wykorzystaniem równych narzędzi, w~tym dla ESP32 i~Rasberry Pi Pico, będąc jednocześnie niezależnym od jednego producenta.~\cite{tool:pio}
+PlatformIO to narzędzie do tworzenia i~zarządzania projektami z~wykorzystaniem mikrokontrolerów.
+Pozwala ono na tworzenie projektów w~językach C i~C++.
+PlatformIO oferuje również możliwość zarządzania zależnościami projektu, zarządzania bibliotekami, a~także kompilację i~wgrywanie projektu na płytkę.
+Najważniejszą cechą jest możliwość tworzenia projektów dla wielu platform i z wykorzystaniem równych narzędzi, w~tym dla ESP32 i~Raspberry Pi Pico, będąc jednocześnie niezależnym od jednego producenta~\cite{tool:pio}.
 
 \begin{figure}[b!]
     \begin{center}
         \includegraphics[width=15cm]{pic/pio.jpg}
     \end{center}
-    \caption{Interfejs narzędzia PlatformIO w edytorze Visual Studio Code}\label{rys:pio}
+    \caption{Interfejs narzędzia PlatformIO w edytorze Visual Studio Code}\label{fig:pio}
 \end{figure}

@@ -1,52 +1,97 @@
 \chapter{Perspektywy rozwoju i dalsze badania}
 
 \section{Rozwój projektu}
-W trakcie pracy nad projektem udało się zrealizować wszystkie założenia projektowe. Wszystkie urządzenia zostały zaprogramowane i skonfigurowane, a~system zbierania danych został zaimplementowany. Wszystkie urządzenia zostały przetestowane i działają poprawnie. Jednak w~przyszłości można rozwinąć projekt o~kilka funkcjonalności i usprawnień, które mogą zwiększyć użyteczność systemu.
+W~trakcie pracy nad projektem udało się zrealizować wszystkie założenia projektowe.
+Wszystkie urządzenia zostały zaprogramowane i~skonfigurowane, a~system zbierania danych został zaimplementowany.
+Wszystkie urządzenia zostały przetestowane i~działają poprawnie.
+Jednak w~przyszłości można rozwinąć projekt o~kilka funkcjonalności i~usprawnień, które mogą zwiększyć użyteczność systemu.
 
 \subsection{Optymalizacja energetyczna węzłów sieci}
 \subsubsection*{Zmniejszenie częstotliwości wysyłania pakietów}
-Implementacja węzłów sieci w obecnej wersji skupia się na stabilności i poprawności działania. Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność optymalizacji energetycznej węzłów sieci. W~obecnej wersji węzły sieci wysyłają pakiety w~stałych odstępach czasu. Jednak w~przypadku, gdy węzły sieci nie wykryją żadnych zmian w~otoczeniu, nie ma potrzeby wysyłania pakietów. W~takiej sytuacji można zastosować algorytm, który będzie sprawdzał, czy w~otoczeniu węzła sieci występują jakieś zmiany. Jeśli nie, to węzeł sieci będzie wysyłał pakiety w~dłuższych odstępach czasu. Dzięki temu można zaoszczędzić energię węzłów sieci.
+Implementacja węzłów sieci w~obecnej wersji skupia się na stabilności i~poprawności działania.
+Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność optymalizacji energetycznej węzłów sieci.
+W~obecnej wersji węzły sieci wysyłają pakiety w~stałych odstępach czasu.
+Jednak w~przypadku, gdy węzły sieci nie wykryją żadnych zmian w~otoczeniu, nie ma potrzeby wysyłania pakietów.
+W~takiej sytuacji można zastosować algorytm, który będzie sprawdzał, czy w~otoczeniu węzła sieci występują jakieś zmiany.
+Jeśli nie, to węzeł sieci będzie wysyłał pakiety w~dłuższych odstępach czasu.
+Dzięki temu można zaoszczędzić energię węzłów sieci.
 
-\subsubsection{Uśpeinie węzłów sieci}
+\subsubsection{Uśpienie węzłów sieci}
 
-Dodatkowo wiele mikrokontrolerów  posiada funkcjonalność głębokiego uśpienia. W~takim trybie mikrokontroler zużywa bardzo mało energii. Jednak w~takim trybie mikrokontroler nie jest w~stanie wykonywać żadnych operacji. Należałoby rozpoznać czy tryby uśpienia zaproponowanych przez producentów mikrokontrolerów są wystarczające do zastosowania w~projekcie. Jeśli tak, to można zastosować tryby uśpienia w~węzłach sieci, które nie będą wysyłały pakietów przez dłuższy czas.
+Wiele mikrokontrolerów posiada funkcjonalność głębokiego uśpienia.
+W~takim trybie mikrokontroler zużywa bardzo mało energii.
+Jednak w~takim trybie mikrokontroler nie jest w~stanie wykonywać żadnych operacji.
+Należałoby rozpoznać czy tryby uśpienia zaproponowanych przez producentów mikrokontrolerów są wystarczające do zastosowania w~projekcie.
+Jeśli tak, to można zastosować tryby uśpienia w~węzłach sieci, które nie będą wysyłały pakietów przez dłuższy czas.
 
 \subsubsection*{Większa bateria}
-By wydłużyć czas działania węzłów sieci można również zastosować większe baterie. Wydłużyło by to czas pracy na baterii.
+W celu wydłużenia czasu działania węzłów sieci można również zastosować większe baterie. Wydłużyłoby to czas pracy na baterii.
 
 \subsubsection*{Zastosowanie innych technologii}
-W celu optymalizacji energetycznej węzłów sieci można również zastosować inne technologię do oprogramowania węzłów sieci. W~obecnej wersji węzły sieci niektóre węzły sieci zostały zaprogramowane w~języku MicroPython, a~inne w~języku C++. W~przyszłości można przepisać wszystkie węzły sieci na jeden język programowania. W~takim przypadku można zastosować język C++, który jest bardziej wydajny od języka MicroPython. Dzięki temu można zwiększyć wydajność węzłów sieci przy jednoczesnej zwiększonej wydajności energetycznej.
+W~celu optymalizacji energetycznej węzłów sieci można również zastosować inne technologie do oprogramowania węzłów sieci.
+W~obecnej wersji węzły sieci niektóre węzły sieci zostały zaprogramowane w~języku MicroPython, a~inne w~języku C++.
+W~przyszłości można przepisać wszystkie węzły sieci na jeden język programowania.
+W~takim przypadku można zastosować język C++, który jest bardziej wydajny od języka MicroPython.
+Dzięki temu można zwiększyć wydajność węzłów sieci przy jednoczesnej zwiększonej wydajności energetycznej.
 % TODO: dodać bibliografi o wydjaności języków programowania
 
 \subsection{Bezpieczeństwo}
 
 \subsubsection{Autoryzacja węzłów sieci}
-W~obecnej wersji systemu węzły sieci nie są autoryzowane. W~takiej sytuacji każdy węzeł sieci może dołączyć do sieci i~wysyłać pakiety. Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność autoryzacji węzłów sieci. W~takiej sytuacji węzły sieci będą musiały autoryzować się przed dołączeniem do sieci. Dzięki temu można zwiększyć bezpieczeństwo systemu.
+W~obecnej wersji systemu węzły sieci nie są autoryzowane.
+W~takiej sytuacji każdy węzeł sieci może dołączyć do sieci i~wysyłać pakiety.
+Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność autoryzacji węzłów sieci.
+W~takiej sytuacji węzły sieci będą musiały autoryzować się przed dołączeniem do sieci.
+Dzięki temu można zwiększyć bezpieczeństwo systemu.
 
 \subsubsection{Szyfrowanie wiadomości}
-W~obecnej wersji systemu wiadomości wysyłane przez węzły sieci nie są szyfrowane. Biorąc pod uwagę specyfikę protokołu LoRa wiadomości sa rozgłaszane w formie broadcastu, więc mogą zostać odebrane przez dowolne urządzenie. Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność szyfrowania wiadomości. W~takiej sytuacji węzły sieci będą szyfrowały wiadomości przed wysłaniem ich do stacji przekaźnikowej. Następnie stacja przekaźnikowa będzie odszyfrowywała wiadomości przed przekazaniem ich do brokera wiadomości. Dzięki temu można zwiększyć bezpieczeństwo systemu.
+W~obecnej wersji systemu wiadomości wysyłane przez węzły sieci nie są szyfrowane.
+Biorąc pod uwagę specyfikę protokołu LoRa wiadomości są rozgłaszane w formie broadcastu, więc mogą zostać odebrane przez dowolne urządzenie.
+Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność szyfrowania wiadomości.
+W~takiej sytuacji węzły sieci będą szyfrowały wiadomości przed wysłaniem ich do stacji przekaźnikowej.
+Następnie stacja przekaźnikowa będzie odszyfrowywała wiadomości przed przekazaniem ich do brokera wiadomości.
+Dzięki temu można zwiększyć bezpieczeństwo systemu.
 
-Należałoby rozpoznać, czy szyfrowanie wiadomości nie spowoduje zbyt dużego spadku wydajności systemu. W~takim przypadku można zastosować szyfrowanie wiadomości tylko w~sytuacji, gdy w~wiadomości znajdują się dane wrażliwe.
+Należałoby rozpoznać, czy szyfrowanie wiadomości nie spowoduje zbyt dużego spadku wydajności systemu.
+W~takim przypadku można zastosować szyfrowanie wiadomości tylko w~sytuacji, gdy w~wiadomości znajdują się dane poufne.
 
-Należałoby również sprawdzić jaka forma szyfrowania jest najbardziej odpowiednia do zastosowania w~projekcie. W~tym celu można przeprowadzić badania porównujące różne formy i algorytmy szyfrowania pod względem wydajności i~bezpieczeństwa.
+Należałoby również sprawdzić, jaka forma szyfrowania jest najbardziej odpowiednia do zastosowania w~projekcie.
+W~tym celu można przeprowadzić badania porównujące różne formy i~algorytmy szyfrowania pod względem wydajności i~bezpieczeństwa.
 
-Jeżeli zdecydowano by się na implementacje szyfrowania z wykorzystaniem klucza, to należałoby rozpoznać, jak klucz będzie przekazywany do węzłów sieci. W~tym celu można zastosować algorytm wymiany klucza Diffiego-Hellmana. Dzięki temu klucz szyfrowania będzie przekazywany bezpiecznie.
+Jeżeli zdecydowano by się na implementacje szyfrowania z~wykorzystaniem klucza, to należałoby rozpoznać, jak klucz będzie przekazywany do węzłów sieci.
+W~tym celu można zastosować algorytm wymiany klucza Diffiego-Hellmana.
+Dzięki temu klucz szyfrowania będzie przekazywany bezpiecznie.
 
-W celu szyfrowania wiadomości należałoby również rozpoznać, jakie algorytmy szyfrowania są dostępne w~mikrokontrolerach. W~tym celu można przeprowadzić badania porównujące różne mikrokontrolery pod względem dostępnych algorytmów szyfrowania.
+W celu szyfrowania wiadomości należałoby również rozpoznać, jakie algorytmy szyfrowania są dostępne w~mikrokontrolerach.
+W~tym celu można przeprowadzić badania porównujące różne mikrokontrolery pod względem dostępnych algorytmów szyfrowania.
 
 \subsection{Komunikacja dwukierunkowa}
-W~obecnej wersji systemu komunikacja między węzłami sieci a~stacją przekaźnikową jest jednokierunkowa. Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność komunikacji dwukierunkowej. W~takiej sytuacji węzły sieci będą mogły odbierać wiadomości od stacji przekaźnikowej. Dzięki temu można zwiększyć użyteczność systemu, chociażby poprzez możliwość zdalnego sterowania węzłami sieci.
+W~obecnej wersji systemu komunikacja między węzłami sieci a~stacją przekaźnikową jest jednokierunkowa.
+Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność komunikacji dwukierunkowej.
+W~takiej sytuacji węzły sieci będą mogły odbierać wiadomości od stacji przekaźnikowej.
+Dzięki temu można zwiększyć użyteczność systemu, chociażby poprzez możliwość zdalnego sterowania węzłami sieci.
 
 \subsection{Przygotowanie nowych węzłów sieci}
-W obecnej wersji systemu została przygotowana implementacja węzłów sieci, która jest kompatybilna z~platformami opartymi o Arduino lub MicroPython. Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność przygotowania nowych węzłów sieci. W~takiej sytuacji można przygotować implementację węzłów sieci, która będzie kompatybilna z~innymi platformami(takimi jak STM32). Dzięki temu można zwiększyć uniwersalność systemu.
+W~obecnej wersji systemu została przygotowana implementacja węzłów sieci, która jest kompatybilna z~platformami opartymi o Arduino lub MicroPython.
+Jednak w~przyszłości można rozwinąć projekt o~funkcjonalność przygotowania nowych węzłów sieci.
+W~takiej sytuacji można przygotować implementację węzłów sieci, która będzie kompatybilna z~innymi platformami (takimi jak STM32).
+Dzięki temu można zwiększyć uniwersalność systemu.
 
 \section{Dalsze badania}
 
 \subsection{Badania wydajnościowe dużej sieci}
-W~trakcie pracy nad projektem zostały przeprowadzone testy wydajnościowe małej sieci(3 węzły). Jednak powinny zostać przeprowadzone badania wydajnościowe dużej sieci. W~takiej sytuacji można przetestować wydajność systemu w~sytuacji, gdy w~sieci znajduje się dużo węzłów sieci na znacznej powierzchni. Dzięki temu można sprawdzić, czy system jest w~stanie obsłużyć dużą liczbę węzłów.
+W~trakcie pracy nad projektem zostały przeprowadzone testy wydajnościowe małej sieci (3 węzły).
+Jednak powinny zostać przeprowadzone badania wydajnościowe dużej sieci.
+W~takiej sytuacji można przetestować wydajność systemu w~sytuacji, gdy w~sieci znajduje się dużo węzłów sieci na znacznej powierzchni.
+Dzięki temu można sprawdzić, czy system jest w~stanie obsłużyć dużą liczbę węzłów.
 
 \subsection{Badania konsumpcji energii}
-W trakcie przyszłych prac nad projektem należałoby przeprowadzić badania konsumpcji energii węzłów sieci. W~takiej sytuacji można sprawdzić, jak długo węzły sieci mogą działać na baterii. Należałoby również zoptymalizować zużycie energii węzłów sieci. Dzięki temu można zwiększyć czas działania węzłów sieci na zasilaniu bateryjnym.
+W~trakcie przyszłych prac nad projektem należałoby przeprowadzić badania konsumpcji energii węzłów sieci.
+W~takiej sytuacji można sprawdzić, jak długo węzły sieci mogą działać na baterii.
+Należałoby również zoptymalizować zużycie energii węzłów sieci.
+Dzięki temu można zwiększyć czas działania węzłów sieci na zasilaniu bateryjnym.
 
 \subsection{Badania zasięgu sieci}
-W~trakcie przyszłych prac nad projektem należałoby przeprowadzić badania zasięgu sieci. W~takiej sytuacji można sprawdzić, jak daleko od siebie mogą znajdować się węzły sieci. Dzięki temu można sprawdzić, jakie są ograniczenia zasięgu sieci.
+W~trakcie przyszłych prac nad projektem należałoby przeprowadzić badania zasięgu sieci.
+W~takiej sytuacji można sprawdzić, jak daleko od siebie mogą znajdować się węzły sieci.
+Dzięki temu można sprawdzić, jakie są ograniczenia zasięgu sieci.
