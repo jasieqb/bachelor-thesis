@@ -1,3 +1,15 @@
 \chapter*{Podsumowanie}
-
 \addcontentsline{toc}{chapter}{Podsumowanie}
+
+W pracy został przedstawiony autorski projekt systemu zbierania rozproszonych danych z~wykorzystaniem sieci LoRa, który został też zaimplementowany i~wdrożony. System spełnił wszystkie założenia projektowe, to jest:
+\begin{itemize}
+    \item jeden centralny punkt gromadzenia danych,
+    \item zapisywanie danych do bazy danych szeregów czasowych, w celu ich dalszego przetwarzania,
+    \item zbieranie danych z dużego obszaru,
+    \item niezależność od istniejących metod przesyłu danych (WiFi, sieci komórkowe, łączność satelitarna),
+    \item niezależność od platformy sprzętowej,
+    \item możliwie duża dostarczalność pakietów,
+    \item dopuszczalne drobne opóźnienia w dostarczaniu danych.
+\end{itemize}
+
+Został on przetestowany w~praktyce — choć w~bardzo niewielkiej skali. Testy te pokazały, że system działa poprawnie i~może być użyty w~rzeczywistych zastosowaniach. Przedstawiono również dalsze możliwości rozwoju systemu.

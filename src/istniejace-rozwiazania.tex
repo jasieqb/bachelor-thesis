@@ -8,13 +8,10 @@ Protokół ten jest oparty o~protokół \texttt{LoRa}, i~pozwala na budowę siec
 Węzły sieci komunikują się z~bramami, a~bramy przekazują dane do serwera.
 Serwer jest odpowiedzialny za przetworzenie danych i~przekazanie ich do aplikacji użytkownika.
 
-% \section{The Things Network}
-
-% \section{ChirpStack ?}
-% \section{Loriot ?}
+Sieć oparta o protokół \texttt{LoRaWAN} jest siecią typu gwiazda. Przez to, że węzły sieci komunikują się tylko z~bramami, a~nie z~innymi węzłami, sieć jest łatwa do zarządzania, ale utrudnia to skalowanie. Jeżeli brama osiągnie maksymalną liczbę węzłów, to aby dodać kolejne węzły, należy dodać kolejną bramę. Dodatkowo, jeżeli brama ulegnie awarii, to wszystkie węzły, które komunikowały się z~tą bramą, muszą nawiązać połączenie z~inną bramą, co może prowadzić do utraty danych. Same bramy są urządzeniami o~dużej wydajności, co prowadzi do zwiększenia kosztów projektu.
 
 
-\section{Biblioteka \texttt{LoRaMesher}} \label{sec:loramesher}
+\section{Biblioteka \texttt{LoRaMesher}}~\label{sec:loramesher}
 Badacze w artykule zaproponowali otwartoźródłową implementację autorskiego protokołu \texttt{LoRaMesher}~\cite{bib:loramesher} w postaci darmowej biblioteki.
 Biblioteka ta pozwala na budowę sieci opartej o~LoRa bez użycia bram.
 Autorzy zaimplementowali protokół w~języku C\texttt{++} z~użyciem systemu FreeRTOS.

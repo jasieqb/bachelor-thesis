@@ -15,5 +15,6 @@
         "UART",
         "Waveshare"
     ],
-    "cSpell.language": "pl,en"
+    "cSpell.language": "pl,en",
+    // "editor.snippetSuggestions": "top"
 }
