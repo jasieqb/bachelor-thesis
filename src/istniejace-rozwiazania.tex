@@ -24,7 +24,7 @@ Testy zostały przeprowadzone w~trzech różnych scenariuszach:
 \begin{itemize}
     \item Sieć złożona z 10 węzłów sieci, oddalone od siebie o~jeden skok. W~takiej sieci wskaźnik dostarczenia pakietów wynosił 90\%.
     \item Sieć złożona z 10 węzłów, ułożonych w~łańcuch (szeregowo). W~tym przypadku wskaźnik dostarczenia pakietów wynosił 96\%.
-    \item Sieć złożona z 10 węzłów, w~tym 5~węzłów działało tylko jako przekaźniki. Architektura sieci symulowało użycie biblioteki w~realnym zastosowaniem. W~tym przypadku wskaźnik dostarczenia pakietów wynosił 86\%.
+    \item Sieć złożona z 10 węzłów, w~tym 5~węzłów działało tylko jako przekaźniki. Architektura sieci symulowało użycie biblioteki w~realnym zastosowaniu. W~tym przypadku wskaźnik dostarczenia pakietów wynosił 86\%.
 \end{itemize}
 
 Wyniki testów pokazują, że biblioteka działa poprawnie i~może być zastosowana w~prawdziwych zastosowaniach.
@@ -35,7 +35,7 @@ Dzięki temu można zastosować węzły sieci o~mniejszej wydajności, co pozwal
 
 Biblioteka ta została również przygotowana z~myślą o~zastosowaniach, w~których część działania logiki systemu odbywa się na węzłach sieci.
 W projekcie zastosowano rozwiązanie, w~którym cała większego systemu jest zaimplementowana w stacji przekaźnikowej i~aplikacji zapisującej do bazy danych.
-Dzięki temu można zastosować węzły sieci o~mniejszej wydajności i~zmniejsza poziom skomplikowania systemu.
+Dzięki temu można zastosować węzły sieci o~mniejszej wydajności i~zmniejszyć poziom skomplikowania systemu.
 
 \section{System monitorowania dużej powierzchni z wykorzystaniem LoRa, oparty o~architekturę typu mesh}
 
@@ -47,7 +47,7 @@ Główny test został poprzedzony kilkoma mniejszymi testami, które pozwoliły 
 System był testowany przez 8~dni na obszarze 800 na 600 metrów.
 Test zawierał jedną stację bazową i~10 węzłów sieci.
 Dane były pobierane co 60 sekund.
-Wskaźnik dostarczlnośći pakietów uplasował się w~okolicach 88.49\%.
+Wskaźnik dostarczlności pakietów uplasował się w~okolicach 88.49\%.
 
 Cechą charakterystyczną tego rozwiązania jest sposób budowania sieci.
 Węzeł podczas dołączenia do sieci sam decyduje, przez który z~sąsiadujących węzłów nawiąże komunikacje.
@@ -73,7 +73,7 @@ W odróżnieniu od wyżej opisanych artykułów, autorzy zaproponowali rozwiąza
 W podanym artykule zostały również przedstawione wyniki testów wydajnościowych, takich jak:
 \begin{itemize}
     \item czas potrzebny na przesłanie pakietu między węzłami sieci,
-    \item przetwarzanie kilku pakietów między węzłami sieci jednocześnie
+    \item przetwarzanie kilku pakietów między węzłami sieci jednocześnie,
     \item skuteczność przesyłu pakietów między węzłami sieci w zależności od odległości między nimi i ustawień transmisji.
 \end{itemize}
 

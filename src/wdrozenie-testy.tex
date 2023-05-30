@@ -8,9 +8,9 @@ Wdrożenie polegało na uruchomieniu serwera z~bazą danych, jednej stacji przek
 % Węzły sieci zostały umieszczone w trzech różnych miejscach w Lublinie. Pierwszy z nich został umieszczony na dachu budynku Wydziału Matematyki, Fizyki i Informatyki UMCS. Drugi został umieszczony na dachu budynku Wydziału Elektrotechniki i Informatyki Politechniki Lubelskiej. Trzeci został umieszczony na dachu budynku Wydziału Informatyki Politechniki Lubelskiej. Wszystkie urządzenia zostały umieszczone na wysokości 20 metrów nad poziomem gruntu. Wszystkie urządzenia zostały umieszczone na zewnątrz, w~specjalnych obudowach, które zapewniają ochronę przed warunkami atmosferycznymi. Wszystkie urządzenia zostały zasilone z sieci elektrycznej.
 
 Trzy węzły sieci zostały rozmieszczone na małym obszarze, około 30 metrów od siebie, w~dwóch budynkach.
-Dwa urządzenia (jedno Raspberry Pi Pico i~jedno TTGO LoRa32) zasilane są z~sieci, jedno za pomocą baterii.
+Dwa urządzenia (jedno Raspberry Pi Pico i~jedno TTGO LoRa32) zasilane są z~sieci, jedno za pomocą baterii (Raspberry Pi Pico).
 Urządzenia zostały połączone z~czujnikami za pomocą zwykłych kabli prototypowych, jak na rysunku~\ref{rys:wezel1}. %i~\ref{rys:wezel2}.
-Przykład urządzenia wykorzystującego wbudowane czujniki został zaprezentowany na rysunku~\ref{rys:wezel2}
+Przykład urządzenia wykorzystującego wbudowane czujniki został zaprezentowany na rysunku~\ref{rys:wezel2}.
 
 \begin{figure}[b!]
     \begin{center}
@@ -49,7 +49,7 @@ Na ekranie urządzenia wyświetlane są informacje o~stanie urządzenia, jak na 
 
 
 \subsubsection{Serwer testowy}
-Na serwerze testowy zostały uruchomione wszystkie usługi, które zostały wykorzystane w projekcie, w~szczególności:
+Na serwerze testowym zostały uruchomione wszystkie usługi, które zostały wykorzystane w projekcie, w~szczególności:
 \begin{itemize}
     \item Mosquitto (patrz str.~\pageref{impl:mosquitto})
     \item InfluxDB 2 (patrz str.~\pageref{impl:db})
@@ -59,8 +59,7 @@ Na serwerze testowy zostały uruchomione wszystkie usługi, które zostały wyko
 Serwer został uruchomiony na maszynie wewnątrz budynku, w~sieci lokalnej.
 Na serwerze został uruchomiony system operacyjny Debian 11.
 Maszyna została wyposażona w~procesor Intel Core i5-480M, 2 GB pamięci RAM oraz dysk SSD o pojemności 256 GB.
-Wszystkie usługi zostały uruchomione w~kontenerach Dockera~\cite{tool:docker}.
-Wszystkie usługi zostały uruchomione w~jednej sieci Dockera, w~celu zapewnienia komunikacji między nimi.
+Wszystkie usługi zostały uruchomione w~kontenerach Dockera~\cite{tool:docker}, w jednej sieci wirtualnej, w~celu zapewnienia komunikacji między nimi.
 
 \subsubsection{Broker wiadomości}
 Broker wiadomości został uruchomiony na wspólnym serwerze wewnątrz budynku.

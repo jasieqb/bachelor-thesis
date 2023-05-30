@@ -8,7 +8,7 @@ Został opracowany przez firmę Semtech w 2013 roku, stał się wtedy otwartym s
 LoRa wykorzystuje zastrzeżoną technologię modulacji widma rozproszonego, która umożliwia daleki zasięg, przy ograniczonym zużyciu energii.
 Implementuje on warstwę fizyczną sieci~\cite{lora:about}.
 
-Teoretyczny zasięg sieci LoRa wynosi około 15 km w terenie wiejskim i 2--5 km w terenie zurbanizowanym.
+Teoretyczny zasięg sieci LoRa wynosi około 15 km w otwartym terenie i 2—5 km w terenie zurbanizowanym~\cite{bib:lora-performance}.
 W praktyce zasięg ten jest ograniczony przez wiele czynników, takich jak:
 \begin{itemize}
     \item moc nadajnika,
@@ -30,7 +30,7 @@ Więcej na temat wydajności sieci można przeczytać w~artykule~\cite{bib:lora-
 
 \section{Urządzenia wykorzystywane w~projekcie}
 
-W tym podrozdziale zostaną opisane urządzenia wykorzystane w~projekcie, w~tym ich najważniejsze cechy.
+W tym podrozdziale zostaną opisane urządzenia wykorzystane w~projekcie oraz ich najważniejsze cechy.
 
 \subsection{ESP32}
 ESP32 to jednoukładowy mikrokontroler, zaprojektowany i~produkowany przez firmę Espressif Systems.
@@ -57,12 +57,12 @@ Jego najważniejsze cechy to~\cite{ESP32:datasheet}:
 \end{itemize}
 
 Powstało wiele wersji tego układu, różniące się m.in. szybkością procesora, wielkością pamięci flash, ilością pinów, interfejsów cyfrowych i~analogowych, a~także możliwością pracy w trybie bezprzewodowym lub przewodowym~\cite{ESP32:socs}.
-Najczęściej układ te są wykorzystywane różnych projektach IoT, zarówno jako czujniki, jak i~serwery~\cite{ESP32:datasheet}.
+Najczęściej układ te są wykorzystywane w~różnych projektach IoT, zarówno jako czujniki, jak i~serwery~\cite{ESP32:datasheet}.
 
 
 %  PROJECTS
-W projekcie ESP32 zostało wykorzystane w dwóch płytkach TTGO T3 LoRa32 V1.6.1.
-Jedna z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią LoRa, a~siecią WiFi, a druga jako cześć systemu zbierania danych z wykorzystaniem LoRa.
+W projekcie ESP32 użyto w dwóch płytkach TTGO T3 LoRa32 V1.6.1.
+Pierwsza z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią LoRa, a~siecią WiFi, a druga jako cześć systemu zbierania danych z wykorzystaniem LoRa.
 
 
 \subsection{Raspberry Pi Pico}
@@ -80,7 +80,7 @@ Płytka posiada również wiele interfejsów cyfrowych i~analogowych (takich jak
 %     \item PWM
 %     \item USB 1.1
 % \end{itemize}~\cite{PICO:datasheet,PICO:doc}
-Płytka ta jest często wykorzystywana zarówno przez hobbystów do różnych projektów IoT, a~także jako sterownik silników, czy kontroler robotów, jak i jest szeroko używana w przemyśle~\cite{PICO:doc}.
+Jest ona często wykorzystywana zarówno przez hobbystów do różnych projektów IoT, a~także jako sterownik silników, czy kontroler robotów, jak i jest szeroko używana w przemyśle~\cite{PICO:doc}.
 
 %  PROJECTS
 W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania danych.
@@ -115,7 +115,7 @@ Zapewnia to wydają komunikację przy małym obciążeniu systemu~\cite{protocol
 
 \section{Bazy danych i pozostałe technologie}
 \subsection{InfluxDB 2}
-InfluxDB 2 to baza danych szeregów czasowych, stworzona przez InfluxData, Została napisana w języku Go.
+InfluxDB 2 to baza danych szeregów czasowych, stworzona przez InfluxData, została napisana w języku Go.
 Wykorzystywana jest do zbierania danych, między innymi z~urządzeń IoT, metryk aplikacji, monitoringu infrastruktury IT~\cite{tool:influxdb}.
 
 \subsection{Docker}
@@ -127,7 +127,7 @@ Kontenery mniej obciążają pamięć i procesor od wirtualnych maszyn, poniewa�
 PlatformIO to narzędzie do tworzenia i~zarządzania projektami z~wykorzystaniem mikrokontrolerów.
 Pozwala ono na tworzenie projektów w~językach C i~C++.
 PlatformIO oferuje również możliwość kontrolowania zależności projektu, łatwego dodawania bibliotek, a~także kompilację i~wgrywanie projektu na płytkę.
-Najważniejszą cechą jest możliwość tworzenia projektów dla wielu platform i z wykorzystaniem równych narzędzi, w~tym dla ESP32 i~Raspberry Pi Pico, będąc jednocześnie niezależnym od jednego producenta~\cite{tool:pio}.
+Najważniejszą cechą jest możliwość tworzenia projektów dla wielu platform i z wykorzystaniem równych narzędzi, w~tym dla ESP32 i~Raspberry Pi Pico, będąc jednocześnie niezależnym od jednego producenta~\cite{tool:pio}. Na rysunku~\ref{fig:pio} przedstawiono interfejs narzędzia PlatformIO w edytorze Visual Studio Code.
 
 \begin{figure}[b!]
     \begin{center}
