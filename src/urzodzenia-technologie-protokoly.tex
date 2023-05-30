@@ -4,7 +4,7 @@ W tym rozdziale zostaną opisane narzędzia, technologie i~protokoły wykorzysta
 \section{Technologia LoRa}
 LoRa (ang. \emph{Long Range} — daleki zasięg) to protokół komunikacji bezprzewodowej, stworzony z myślą o~urządzeniach IoT (ang. \emph{Internet of Things} — Internet rzeczy).
 Przeznaczony jest do komunikacji na duże odległości i~z~niskim zużyciem energii.
-Został opracowany przez Semtech w 2013 roku, stał się wtedy otwartym standardem.
+Został opracowany przez firmę Semtech w 2013 roku, stał się wtedy otwartym standardem.
 LoRa wykorzystuje zastrzeżoną technologię modulacji widma rozproszonego, która umożliwia daleki zasięg, przy ograniczonym zużyciu energii.
 Implementuje on warstwę fizyczną sieci~\cite{lora:about}.
 
@@ -57,12 +57,12 @@ Jego najważniejsze cechy to~\cite{ESP32:datasheet}:
 \end{itemize}
 
 Powstało wiele wersji tego układu, różniące się m.in. szybkością procesora, wielkością pamięci flash, ilością pinów, interfejsów cyfrowych i~analogowych, a~także możliwością pracy w trybie bezprzewodowym lub przewodowym~\cite{ESP32:socs}.
-Najczęściej układ te wykorzystywane różnych projektach IoT, zarówno jako czujniki, jak i~serwery~\cite{ESP32:datasheet}.
+Najczęściej układ te są wykorzystywane różnych projektach IoT, zarówno jako czujniki, jak i~serwery~\cite{ESP32:datasheet}.
 
 
 %  PROJECTS
-W projekcie ESP32 zostało wykorzystane w dwóch płytkach TTGO T3 V1.6.1.
-Jedna z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią LoRa a~siecią WiFi, a druga jako cześć systemu zbierania danych z wykorzystaniem LoRa.
+W projekcie ESP32 zostało wykorzystane w dwóch płytkach TTGO T3 LoRa32 V1.6.1.
+Jedna z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią LoRa, a~siecią WiFi, a druga jako cześć systemu zbierania danych z wykorzystaniem LoRa.
 
 
 \subsection{Raspberry Pi Pico}
@@ -80,7 +80,7 @@ Płytka posiada również wiele interfejsów cyfrowych i~analogowych (takich jak
 %     \item PWM
 %     \item USB 1.1
 % \end{itemize}~\cite{PICO:datasheet,PICO:doc}
-Płytka ta jest często wykorzystywana przez hobbystów do różnych projektów IoT, a~także jako sterownik silników, czy kontroler robotów\cite{PICO:doc}.
+Płytka ta jest często wykorzystywana zarówno przez hobbystów do różnych projektów IoT, a~także jako sterownik silników, czy kontroler robotów, jak i jest szeroko używana w przemyśle~\cite{PICO:doc}.
 
 %  PROJECTS
 W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania danych.
@@ -101,7 +101,7 @@ W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania d
 % \section{Języki programowania i technologie}
 % \subsection{\texttt{C++} for Arduio}
 % ---
-\section{MicroPython for Raspberry Pi Pico}
+\section{MicroPython dla Raspberry Pi Pico}
 MicroPython to lekka~i wydajna implementacja języka Python 3, która została zaprojektowana~z myślą~o urządzeniach wbudowanych.
 Zawiera on okrojoną wersję biblioteki standardowej Pythona.
 MicroPython jest dostępny na wiele platform,~w tym na Raspberry Pi Pico~\cite{PICO:micropython}.
@@ -116,7 +116,7 @@ Zapewnia to wydają komunikację przy małym obciążeniu systemu~\cite{protocol
 \section{Bazy danych i pozostałe technologie}
 \subsection{InfluxDB 2}
 InfluxDB 2 to baza danych szeregów czasowych, stworzona przez InfluxData, Została napisana w języku Go.
-Wykorzystywana jest do zbierania danych z~, między innymi, urządzeń IoT, metryk aplikacji, monitoringu infrastruktury IT~\cite{tool:influxdb}.
+Wykorzystywana jest do zbierania danych, między innymi z~urządzeń IoT, metryk aplikacji, monitoringu infrastruktury IT~\cite{tool:influxdb}.
 
 \subsection{Docker}
 Docker to narzędzie do wirtualizacji na poziomie systemu operacyjnego.
@@ -126,7 +126,7 @@ Kontenery mniej obciążają pamięć i procesor od wirtualnych maszyn, poniewa�
 \subsection{PlatformIO}
 PlatformIO to narzędzie do tworzenia i~zarządzania projektami z~wykorzystaniem mikrokontrolerów.
 Pozwala ono na tworzenie projektów w~językach C i~C++.
-PlatformIO oferuje również możliwość zarządzania zależnościami projektu, zarządzania bibliotekami, a~także kompilację i~wgrywanie projektu na płytkę.
+PlatformIO oferuje również możliwość kontrolowania zależności projektu, łatwego dodawania bibliotek, a~także kompilację i~wgrywanie projektu na płytkę.
 Najważniejszą cechą jest możliwość tworzenia projektów dla wielu platform i z wykorzystaniem równych narzędzi, w~tym dla ESP32 i~Raspberry Pi Pico, będąc jednocześnie niezależnym od jednego producenta~\cite{tool:pio}.
 
 \begin{figure}[b!]

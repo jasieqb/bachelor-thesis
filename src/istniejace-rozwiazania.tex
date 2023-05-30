@@ -4,11 +4,11 @@ W tym rozdziale zostaną przedstawione istniejące rozwiązania, które zostały
 
 LoRaWAN (ang. \emph{LoRa Wide Area Network}) to protokół komunikacji stworzony przez LoRa Alliance~\cite{lora:about}.
 Protokół ten został stworzony z myślą o~zastosowaniach w sieciach IoT.
-Protokół ten jest oparty o~protokół \texttt{LoRa}, i~pozwala na budowę sieci \texttt{LoRa} w~oparciu o~bramy.
+Protokół ten jest oparty o~protokół LoRa, i~pozwala na budowę sieci LoRa w~oparciu o~bramy.
 Węzły sieci komunikują się z~bramami, a~bramy przekazują dane do serwera.
 Serwer jest odpowiedzialny za przetworzenie danych i~przekazanie ich do aplikacji użytkownika.
 
-Sieć oparta o protokół \texttt{LoRaWAN} jest siecią typu gwiazda. Przez to, że węzły sieci komunikują się tylko z~bramami, a~nie z~innymi węzłami, sieć jest łatwa do zarządzania, ale utrudnia to skalowanie. Jeżeli brama osiągnie maksymalną liczbę węzłów, to aby dodać kolejne węzły, należy dodać kolejną bramę. Dodatkowo, jeżeli brama ulegnie awarii, to wszystkie węzły, które komunikowały się z~tą bramą, muszą nawiązać połączenie z~inną bramą, co może prowadzić do utraty danych. Same bramy są urządzeniami o~dużej wydajności, co prowadzi do zwiększenia kosztów projektu.
+Sieć oparta o protokół \texttt{LoRaWAN} jest siecią typu gwiazda. Przez to, że węzły sieci komunikują się tylko z~bramami, a~nie z~innymi węzłami, sieć jest łatwa do zarządzania, ale utrudnia to skalowanie. Jeżeli brama osiągnie maksymalną liczbę węzłów, to aby dodać kolejne węzły, należy dodać kolejną bramę. Dodatkowo, jeżeli brama ulegnie awarii, to wszystkie węzły, które komunikowały się z~danym punktem dostępowym, muszą nawiązać połączenie z~innym, co może prowadzić do utraty danych. Same bramy są urządzeniami o~dużej wydajności, co prowadzi do zwiększenia kosztów projektu.
 
 
 \section{Biblioteka \texttt{LoRaMesher}}~\label{sec:loramesher}
@@ -31,16 +31,16 @@ Wyniki testów pokazują, że biblioteka działa poprawnie i~może być zastosow
 Jednak w~artykule nie zostały przedstawione wyniki testów wydajnościowych, które mogłyby pokazać, jak dużo pakietów może być obsłużonych przez bibliotekę.
 
 W odróżnieniu od rozwiązania zaproponowanego w~artykule, w~projekcie zostało zaproponowane rozwiązanie wymagające jednokierunkowej komunikacji z~węzłami sieci.
-Dzięki temu można zastosować węzły sieci o~mniejszej wydajności, co pozwala zarówno na zmniejszenie kosztów projektu, jak i~działania węzłów na baterii.
+Dzięki temu można zastosować węzły sieci o~mniejszej wydajności, co pozwala zarówno na zmniejszenie kosztów projektu, jak i~wydłużyć czas~działania węzłów na baterii.
 
 Biblioteka ta została również przygotowana z~myślą o~zastosowaniach, w~których część działania logiki systemu odbywa się na węzłach sieci.
 W projekcie zastosowano rozwiązanie, w~którym cała większego systemu jest zaimplementowana w stacji przekaźnikowej i~aplikacji zapisującej do bazy danych.
-Dzięki temu można zastosować węzły sieci o~mniejszej wydajności i~zmniejsz poziom skomplikowania systemu.
+Dzięki temu można zastosować węzły sieci o~mniejszej wydajności i~zmniejsza poziom skomplikowania systemu.
 
 \section{System monitorowania dużej powierzchni z wykorzystaniem LoRa, oparty o~architekturę typu mesh}
 
 Badacze w podanym artykule~\cite{bib:loramesh-lee} zaproponowali kompletne rozwiązanie umożliwiające monitorowanie dużego obszaru kampusu uniwersyteckiego, w~oparciu tylko o~protokół LoRa.
-W odróżnieniu od artykułu opisanego w sekcji~\ref{sec:loramesher} autorzy opisywanego tutaj artykułu zaproponowali rozwiązanie, w~którym to stacja bazowa pobiera dane od poszczególnych węzłów, a~nie węzły samoistnie wysyłają te dane do stacji bazowej.
+W odróżnieniu od pracy opisanej w sekcji~\ref{sec:loramesher} autorzy opisywanego tutaj artykułu zaproponowali rozwiązanie, w~którym to stacja bazowa pobiera dane od poszczególnych węzłów, a~nie węzły samoistnie wysyłają te dane do stacji bazowej.
 
 Główny test został poprzedzony kilkoma mniejszymi testami, które pozwoliły ustalić najlepsze parametry połączenia między węzłami, jak i~ich najlepsze umiejscowienie.
 
@@ -57,7 +57,7 @@ Największą różnicą między tym rozwiązaniem, a~rozwiązaniem zaproponowany
 W projekcie zastosowano rozwiązanie, w~którym węzły nie komunikują się każdy z każdym, a~jedynie z~wybranym węzłem (rodzicem).
 Takie rozwiązanie pozwala na zmniejszenie ilości pakietów, które muszą być przetworzone przez węzły sieci, co pozwala na zastosowanie węzłów o~mniejszej wydajności.
 Jednak węzły muszą być w stanie komunikować się z~wybranym w~nieznanym procesie rodzicem, co może być problematyczne w~przypadku dużych odległości między węzłami.
-Co więcej, w~przypadku zerwania połączenia z~przekaźnikiem, węzeł musi ponownie nawiązać połączenie z siecią, co może prowadzić do straty danych.
+Co więcej, w~przypadku zerwania połączenia z~przekaźnikiem, węzeł musi ponownie nawiązać połączenie z siecią, co może prowadzić do utraty danych.
 
 Drugą znaczącą różnicą jest sposób komunikacji między węzłami sieci.
 W projekcie zastosowano rozwiązanie, w~którym to stacja bazowa odpowiada za pobieranie danych od węzłów sieci.

@@ -35,12 +35,12 @@ Na rysunku~\ref{rys:system-diagram} przedstawiono schemat systemu.
 
 \subsubsection{Węzły sieci}
 Węzły sieci to urządzenia wyposażone w moduł LoRa i~odpowiednie oprogramowanie pozwalające na pełną obsługę sieci.
-Gdy węzeł odbierze wiadomość, sprawdza jej poprawność i~rozsyła ja dalej w celu zapewnienia jak największego zasięgu i~dostarczalności
+Gdy węzeł odbierze wiadomość, sprawdza jej poprawność i~rozsyła ją dalej w celu zapewnienia jak największego zasięgu i~dostarczalności
 
 Urządzenie to może być również wyposażone w~różnego rodzaju czujniki, które dostarczają danych bazy danych.
 
 \subsubsection{Stacja przekaźnikowa}
-Stacja przekaźnikowa to urządzenie wyposażone zarówno w~moduł LoRa, jak i~moduł umożliwiający komunikację z~siecią Internet (np. moduł WiFI lub moduł bazy Ethernet).
+Stacja przekaźnikowa to urządzenie wyposażone zarówno w~moduł LoRa, jak i~moduł umożliwiający komunikację z~siecią Internet (np. moduł WiFI lub Ethernet).
 
 Urządzenie to odbiera przychodzące wiadomości LoRa i~przesyła je do brokera wiadomości.
 
@@ -88,7 +88,7 @@ Zawiera ona pola:
 \section{Obsługa protokołu}
 
 \subsubsection{Działanie węzłów}
-Wiadomości generowane są przez węzły sieci, zawierając wszystkie niezbędne pola (wymienione wyżej) i~odczyty z czujników zamieszczonych na węźle.
+Wiadomości generowane są przez węzły sieci, zawierając wszystkie niezbędne pola (wymienione wyżej) i~odczyty z czujników zamieszczonych w~węźle.
 Następnie zostaje ona rozesłana do wszystkich węzłów w~zasięgu (ang. \emph{broadcasting}).
 
 Węzeł odbierając wiadomość, sprawdza jej poprawność (czy jest odpowiednio sformatowana, czy zawiera wszystkie potrzebne pola), i~jeżeli wiadomość jest poprawna, a~pole \texttt{ttl} jest większe od 0~rozsyła wiadomość dalej.
@@ -96,15 +96,15 @@ Sprawdzanie wiadomości odbywa się w~celu wyeliminowania wiadomości niepoprawn
 
 \subsubsection{Działanie stacji przekaźnikowej}
 Stacja przekaźnikowa odbiera wiadomości i~przesyła je do brokera wiadomości.
-Nie sprawdza poprawności wiadomości by, zapewnić maksymalną wydajność i~niezawodność.
+Nie sprawdza poprawności wiadomości, by zapewnić maksymalną wydajność i~niezawodność.
 
 \subsubsection{Działanie bazy danych i programu zapisującego dane}
 Program pobiera kolejne wiadomości od brokera i~przetwarza je w~kolejności:
 \begin{enumerate}
     \item sprawdzenie poprawności wiadomości;
-    \item \label{itm:powtorki} sprawdzenie czy wiadomość nie została już sprawdzona (na podstawie pola \texttt{m\_id});
+    \item \label{itm:powtorki} upewnienie się, czy wiadomość nie została już sprawdzona (na podstawie pola \texttt{m\_id});
     \item zapisanie danych ze słownika \texttt{values} do bazy danych i~przyporządkowanie ich do \texttt{d\_id}, oznaczenie ich znacznikiem czasowym;
-    \item zapisanie w pamięci operacyjnej \texttt{m\_id}, potem do wykorzystania w~kroku~\ref{itm:powtorki}.
+    \item zapisanie w pamięci \texttt{m\_id}, potem do wykorzystania w~kroku~\ref{itm:powtorki}.
 \end{enumerate}
 Baza danych powinna przechowywać dane, takie jak:
 \begin{itemize}
@@ -132,7 +132,7 @@ Urządzenie zostało zaprogramowane w~języku MicroPython z~wykorzystaniem bibli
 Urządzenie wysyła wiadomości zawierające odczyty z czujnika co 5~minut.
 Wysyłanie wiadomości odbywa się w~sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w tym czasie.
 
-\subsubsection{TTGO LoRa32}
+\subsubsection{TTGO T3 LoRa32}
 W wyniku pracy nad systemem zostało przygotowane jedno urządzenie oparte o~TTGO LoRa32.
 Urządzenie zostało wyposażone w~moduł LoRa SX1276~\cite{ESP32:sx1276-doc}.
 Urządzenie zostało zaprogramowane w~języku C++ z użyciem PlatformIO — ekosystemu do programowania urządzeń IoT.~\cite{tool:pio}.
@@ -144,7 +144,7 @@ W programie zostały wykorzystane biblioteki:
     \item \texttt{ESPRandom} — biblioteka do obsługi sprzętowego generatora liczb pseudolosowych~\cite{ESP32:ESPRandom}.
 \end{itemize}
 Urządzenie wysyła wiadomości zawierające odczyty z~czujnika co 5~minut.
-Wiadomości zawierają wartości losowe, wygenerowane za pomocą sprzętowego generatora liczb pseudolosowych zintegrowanego z~mikrokontrolerem ESP32.
+Wiadomości zawierają wartości losowe, wygenerowane za pomocą sprzętowego generatora liczb pseudolosowych, zintegrowanego z~mikrokontrolerem ESP32.
 Wysyłanie wiadomości odbywa się w~sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w~tym czasie.
 
 \subsubsection{Implementacja stacji przekaźnikowej}
@@ -166,18 +166,18 @@ Urządzenie nie sprawdza poprawności wiadomości, by zapewnić jak największą
 
 \subsubsection{Implementacja brokera wiadomości}\label{impl:mosquitto}
 Aby zapewnić niezawodność i~wysoką wydajność komunikacji zdecydowano użyć otwartoźródłowego brokera wiadomości Mosquitto~\cite{tool:mosquitto}.
-Jest to sprawdzony, wydajny i~niezawodny program, który jest szeroko stosowany w systemach IoT, również w~przemyśle~\cite{tool:mosquitto}.
+Jest to sprawdzony, wydajny i~niezawodny program, który jest szeroko stosowany w systemach IoT, również w~zastosowaniach profesjonalnych~\cite{tool:mosquitto}.
 
 \subsubsection{Baza danych}\label{impl:db}
 W celu zapisywania danych zdecydowano użyć bazy danych InfluxDB 2.0~\cite{tool:influxdb}. Jest to baza danych szeregów czasowych, która jest wydajna i niezawodna~\cite{tool:influxdb}.
 
 \subsubsection{Redis}\label{impl:redis}
 W celu przechowywania identyfikatorów wiadomości, które zostały już sprawdzone, zdecydowano użyć bazy danych Redis.
-Redis jest szybką, otwartoźródłową, nierelacyjną bazą danych typu \emph{klucz-wartość}, która jest szeroko stosowana w~systemach informatycznych~\cite{tool:redis}.
+Redis jest szybką, otwartoźródłową, nierelacyjną bazą danych typu \emph{klucz-wartość}, która jest jedną z~najczęściej stosowanych w~systemach informatycznych~\cite{tool:redis}.
 
 \subsubsection{Program zapisujący dane}\label{impl:save}
 W celu zapisywania danych zdecydowano użyć programu napisanego w~języku Python.
-Program został napisany w~języku Python, z~wykorzystaniem bibliotek:
+Program został napisany z~wykorzystaniem bibliotek:
 \begin{itemize}
     \item \texttt{paho-mqtt} — biblioteka do obsługi protokołu MQTT~\cite{py:paho-mqtt};
     \item \texttt{influxdb-client} — biblioteka do obsługi bazy danych InfluxDB~\cite{py:influxdb};

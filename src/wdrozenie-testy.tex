@@ -9,7 +9,7 @@ Wdrożenie polegało na uruchomieniu serwera z~bazą danych, jednej stacji przek
 
 Trzy węzły sieci zostały rozmieszczone na małym obszarze, około 30 metrów od siebie, w~dwóch budynkach.
 Dwa urządzenia (jedno Raspberry Pi Pico i~jedno TTGO LoRa32) zasilane są z~sieci, jedno za pomocą baterii.
-Urządzenia zostały połączone z~czujnikami za pomocą zwykłych kabli prototypowych, jak na rysunku~\ref{rys:wezel1} i~\ref{rys:wezel2}.
+Urządzenia zostały połączone z~czujnikami za pomocą zwykłych kabli prototypowych, jak na rysunku~\ref{rys:wezel1}. %i~\ref{rys:wezel2}.
 Przykład urządzenia wykorzystującego wbudowane czujniki został zaprezentowany na rysunku~\ref{rys:wezel2}
 
 \begin{figure}[b!]
@@ -32,7 +32,7 @@ Przykład urządzenia wykorzystującego wbudowane czujniki został zaprezentowan
     \begin{center}
         \includegraphics[width=13cm]{pic/wezel2.jpg}
     \end{center}
-    \caption{Zdjęcie węzła sieci opartego TTGO LoRa32}\label{rys:wezel2}
+    \caption{Zdjęcie węzła sieci opartego TTGO T3 LoRa32}\label{rys:wezel2}
 \end{figure}
 
 \subsubsection{Stacja przekaźnikowa}
@@ -44,7 +44,7 @@ Na ekranie urządzenia wyświetlane są informacje o~stanie urządzenia, jak na 
     \begin{center}
         \includegraphics[width=13cm]{pic/stacja1.jpg}
     \end{center}
-    \caption{Zdjęcie stacji przekaźnikowej opartej o~TTGO LoRa32}\label{rys:stacja1}
+    \caption{Zdjęcie stacji przekaźnikowej opartej o~TTGO T3 LoRa32}\label{rys:stacja1}
 \end{figure}
 
 
@@ -72,7 +72,7 @@ Nie zostało użyte szyfrowanie TLS.
 Baza danych wraz z programem zapisującym dane zostały uruchomione na wspólnym serwerze wewnątrz budynku.
 Baza danych została zabezpieczona tokenem dostępu, który został zapisany w~pliku konfiguracyjnym.
 Program zapisujący dane został skonfigurowany tak, aby połączyć się z~bazą danych za pomocą tego tokenu.
-Niestety, nie zostało użyte szyfrowanie TLS.
+Nie zostało użyte szyfrowanie TLS.
 Zarówno baza danych, jak i program zapisujący dane zostały uruchomione w kontenerach Dockera, w celu zapewnienia izolacji i~łatwości konfiguracji.
 Na rysunku~\ref{rys:influxdb-web} został przedstawiony zrzut ekranu interfejsu użytkownika InfluxDB 2.
 Na rysunku~\ref{rys:logi-connector} został przedstawiony zrzut ekranu zawierający logi programu zapisującego pomiary do bazy InfluxDB~2.
@@ -94,7 +94,7 @@ Na rysunku~\ref{rys:logi-connector} został przedstawiony zrzut ekranu zawieraj�
 \subsubsection{Redis}
 Redis został uruchomiony na wspólnym serwerze wewnątrz budynku.
 Redis pozostał niezabezpieczony, ponieważ został udostępniony w~sieci wewnętrznej.
-Niestety, nie zostało użyte szyfrowanie TLS.
+Tutaj również nie zostało użyte szyfrowanie.
 Redis został uruchomiony w kontenerze Dockera, w celu zapewnienia izolacji i~łatwości konfiguracji.
 
 % picure of server
@@ -108,8 +108,8 @@ Poprawność działania była weryfikowań na kilka, następujących sposobów:
 \subsubsection{Weryfikacja poprawności działania urządzeń pomiarowych}
 
 Weryfikacja poprawności działania urządzeń pomiarowych została przeprowadzona dla odczytów temperatury.
-Weryfikacja polegała na porównaniu odczytów z~dwóch różnych czujników.
-Porównania dokonano pomiędzy czujnikiem \texttt{DHT11} a~czujnikiem \texttt{DS18B20}.
+Test ten polegał na porównaniu odczytów z~dwóch różnych czujników temperatury w tym sam czasie.
+Porównania dokonano pomiędzy czujnikiem DHT11 a~czujnikiem DS18B20.
 Odczyty zostały zapisane do pliku CSV a~następnie porównane.
 Przykładowe wyniki testów zostały przedstawione na rysunku~\ref{rys:dht-vs-ds}.
 
@@ -123,14 +123,14 @@ Przykładowe wyniki testów zostały przedstawione na rysunku~\ref{rys:dht-vs-ds
 Jak widać na załączonym rysunku, wyniki odczytów są bardzo zbliżone (maksymalna różnica pomiarów to 1°C), co świadczy o~poprawności działania urządzeń pomiarowych.
 
 \subsubsection{Weryfikacja poprawności działania całego sytemu}
-Weryfikacja poprawności działania całego systemu została przeprowadzona poprzez porównywanie pakietów wysyłanych przez urządzenia pomiarowe z`pakietami zapisanymi w~bazie danych.
-Weryfikacja polegała na porównaniu wszystkich pól pakietów.
+Weryfikacja poprawności działania całego systemu została przeprowadzona poprzez porównywanie pakietów wysyłanych przez urządzenia pomiarowe z~pakietami zapisanymi w~bazie danych.
+Próba ta polegała na porównaniu wszystkich pól pakietów.
 Porównanie to odbywało się ręcznie i~dotyczyło tylko kilku pakietów.
 Dodatkowo weryfikowano poprawność działania poprzez sprawdzenie zmian we wskazaniach czujników.
 Przejścia dla temperatury i~wilgotności były bardzo płynne, co świadczy o~poprawności działania systemu.
 Przejścia dla liczb losowych były bardzo chaotyczne, co również świadczy o~poprawności działania systemu.
 Przykładowe wyniki testów zostały przedstawione na rysunku~\ref{rys:porownanie-hum}.
-
+% TODO: WIęcej wyników testów ?
 \begin{figure}[b!]
     \begin{center}
         \includegraphics[width=15cm]{pic/diagram-humidity.png}
