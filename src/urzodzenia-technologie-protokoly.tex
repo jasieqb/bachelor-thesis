@@ -24,7 +24,7 @@ Technologia LoRa pozwala również na dostosowywanie parametrów transmisji, tak
     \item moc nadajnika,
     \item szybkość transmisji,
     \item szerokość pasma,
-    \item spreading factor \emph{(SF)}.
+    \item spreading factor \emph{(SF)} (ang. \emph{współczynnik rozprzestrzeniania}).
 \end{itemize}
 Więcej na temat wydajności sieci można przeczytać w~artykule~\cite{bib:lora-performance}.
 
@@ -56,13 +56,21 @@ Jego najważniejsze cechy to~\cite{ESP32:datasheet}:
           % \item 32 MB pamięci flash
 \end{itemize}
 
-Powstało wiele wersji tego układu, różniące się m.in. szybkością procesora, wielkością pamięci flash, ilością pinów, interfejsów cyfrowych i~analogowych, a~także możliwością pracy w trybie bezprzewodowym lub przewodowym~\cite{ESP32:socs}.
-Najczęściej układ te są wykorzystywane w~różnych projektach IoT, zarówno jako czujniki, jak i~serwery~\cite{ESP32:datasheet}.
+Powstało wiele wersji tego układu, różniących się m.in. szybkością procesora, wielkością pamięci flash, ilością pinów, interfejsów cyfrowych i~analogowych, a~także możliwością pracy w trybie bezprzewodowym lub przewodowym~\cite{ESP32:socs}.
+Najczęściej układ te są wykorzystywane w~różnych projektach IoT, zarówno jako czujniki, jak i~serwery~\cite{ESP32:datasheet}. Na rysunku~\ref{fig:lora32-pinout} przedstawiono schemat wyprowadzeń płytki LoRa32.
 
 
 %  PROJECTS
 W projekcie ESP32 użyto w dwóch płytkach TTGO T3 LoRa32 V1.6.1.
 Pierwsza z płytek została wykorzystana jako przekaźnik danych pomiędzy siecią LoRa, a~siecią WiFi, a druga jako cześć systemu zbierania danych z wykorzystaniem LoRa.
+
+\begin{figure}[b!]
+    \begin{center}
+        \includegraphics[width=13cm]{pic/lora32-pinout.png}
+    \end{center}
+    \caption{Schemat wyprowadzeń TTGO T3 LoRa32 (źródło: \url{https://www.lilygo.cc/products/lora3})}
+    \label{fig:lora32-pinout}
+\end{figure}
 
 
 \subsection{Raspberry Pi Pico}
@@ -80,10 +88,20 @@ Płytka posiada również wiele interfejsów cyfrowych i~analogowych (takich jak
 %     \item PWM
 %     \item USB 1.1
 % \end{itemize}~\cite{PICO:datasheet,PICO:doc}
-Jest ona często wykorzystywana zarówno przez hobbystów do różnych projektów IoT, a~także jako sterownik silników, czy kontroler robotów, jak i jest szeroko używana w przemyśle~\cite{PICO:doc}.
+Jest ona często wykorzystywana zarówno przez hobbystów do różnych projektów IoT, a~także jako sterownik silników, czy kontroler robotów, jak i jest szeroko używana w przemyśle~\cite{PICO:doc}. Na rysunku~\ref{fig:pico-pinout} przedstawiono schemat wyprowadzeń płytki Raspberry Pi Pico.
 
 %  PROJECTS
 W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania danych.
+
+\begin{figure}[b!]
+    \begin{center}
+        \includegraphics[width=13cm]{pic/pico-pinout.png}
+    \end{center}
+    \caption{Schemat wyprowadzeń Raspberry Pi Pico (źródło: \url{https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html})}
+    \label{fig:pico-pinout}
+\end{figure}
+
+
 % \subsection{STM32}
 % STM32 to rodzina 32 bitowych mikrokontrolerów produkowanych przez firmę STMicroelectronics. Bazują one na architekturze ARM Cortex-M, oferują wysoką wydajność i energooszczędność. Cztery główne rodzaje mikrokontrolerów STM32 to:
 % \begin{itemize}
