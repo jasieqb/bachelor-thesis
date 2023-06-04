@@ -176,7 +176,7 @@ def handel_msg(msg: bytes):
         sx.send(msg)
         logger.log_info(f"Message forwarded: {msg}")    
 \end{lstlisting}
-    \caption{Funkcja przetwarzająca przychodzące wiadomości, napisana dla węzłów opartych~o Raspberry Pi Pico}\label{lst:recive-message}
+    \caption{Funkcja przetwarzająca przychodzące wiadomości (napisana dla węzłów opartych~o Raspberry Pi Pico)}\label{lst:recive-message}
 \end{lstfloat}
 
 \subsubsection{TTGO T3 LoRa32}
@@ -268,7 +268,7 @@ void cbk(int packetSize)
     loraData();
 }
 \end{lstlisting}
-    \caption{Funkcja wywoływana w reakcji na przerwanie pochodzące~z modułu LoRa, z~stacji przekaźnikowej opartej o~ESP32}\label{lst:callback}
+    \caption{Funkcja wywoływana w reakcji na przerwanie pochodzące z~modułu LoRa (stacja przekaźnikowa oparta o~ESP32)}\label{lst:callback}
 \end{lstfloat}
 
 \subsubsection{Implementacja brokera wiadomości}\label{impl:mosquitto}
@@ -302,8 +302,8 @@ Na listingu~\ref{lst:mess-recv} przedstawiono metodę obsługującą przychodzą
     \begin{lstlisting}[frame=single]
 def process_message(self, msg):
     json_msg = parse_json_message(msg)
-    if json_msg and  self.valide_message(json_msg) and \
-    not self.check_if_processed(json_msg["m_id"]):
+    if (json_msg and  self.valide_message(json_msg) and 
+            not self.check_if_processed(json_msg["m_id"])):
         self.save_to_redis(json_msg)
         self.save_to_influxdb(json_msg)
 \end{lstlisting}
