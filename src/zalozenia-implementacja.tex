@@ -116,9 +116,19 @@ Baza danych powinna przechowywać dane, takie jak:
 
 \section{Implementacja}
 
+\subsection*{Struktura projektu}
+Projekt został podzielony na kilka części, które zostały umieszczone w~jednym repozytorium (\url{https://github.com/jasieqb/LoRa-mesh-thesis}).
+Repozytorium zostało podzielone na następujące podprojekty:
+\begin{itemize}
+    \item \texttt{esp32\_node} — implementacja węzłów sieci opartych o~mikrokontroler ESP32,
+    \item \texttt{pico\_node} — implementacja węzłów sieci opartych o~mikrokontroler Raspberry Pi Pico,
+    \item \texttt{relay} — implementacja stacji przekaźnikowych,
+    \item \texttt{influxdb-mqtt-connector} — program zapisujący dane do bazy danych, wraz z plikami konfiguracyjnymi, i definicjami kontenerów Docker, które umożliwiają uruchomienie programu w~kontenerze,
+\end{itemize}
+
 \subsubsection{Implementacja węzłów sieci}
 W wyniku pracy nad systemem zbierania danych przygotowano implementację węzłów sieci z~wykorzystaniem dwóch platform sprzętowych:
-% TODO sprawdzić jakie dokładnie to modele
+
 \begin{itemize}
     \item Raspberry Pi Pico,
     \item TTGO LoRa32.
@@ -130,7 +140,44 @@ W wyniku pracy nad systemem zostały przygotowane dwa identyczne urządzenia opa
 Urządzenie zostało wyposażone w moduł LoRa SX1262~\cite{PICO:sx1262-doc} (z wykorzystaniem płytki rozwojowej Waveshare SX1262 LoRa Node Module~\cite{PICO:waveshare-doc}) oraz czujnik temperatury i~wilgotności DHT11.
 Urządzenie zostało zaprogramowane w~języku MicroPython z~wykorzystaniem biblioteki \texttt{micropySX126X}~\cite{PICO:lora-lib}.
 Urządzenie wysyła wiadomości zawierające odczyty z czujnika co 5~minut.
-Wysyłanie wiadomości odbywa się w~sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w tym czasie.
+Wysyłanie wiadomości odbywa się w~sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w tym czasie. Na listingu~\ref{lst:recive-message} przedstawiono funkcję odpowiedzialną za przetwarzanie przychodzących wiadomości.
+
+\begin{lstfloat}[h!]
+    % \begin{lstfloat}[b!]
+    \lstset{language=Python}
+    % \lstset{}
+    \begin{lstlisting}[frame=single]
+def handel_msg(msg: bytes):
+    logger = Logger()
+    msg = msg.decode('utf-8')
+    logger.log_info("Message received: {}".format(msg))
+    if not check_msg(msg):
+        logger.log_error("Message is not valid")
+        return
+    try:
+        msg = json.loads(msg)
+    except ValueError:
+        logger.log_error("Message is not JSON")
+        return
+
+    if msg["d_id"] == GLOBAL_ID:
+        logger.log_warning("Message from myself !!!")
+        return
+
+    if msg["ttl"] == 0:
+        logger.log_warning(f"Message dropped: {msg}, TTL is 0")
+        return
+
+    if msg["ttl"] > 0:
+        msg["ttl"] -= 1
+        msg = json.dumps(msg)
+        msg = msg.encode('utf-8')
+        time.sleep(random_delay/1000.0)
+        sx.send(msg)
+        logger.log_info(f"Message forwarded: {msg}")    
+\end{lstlisting}
+    \caption{Funkcja przetwarzająca przychodzące wiadomości, napisana dla węzłów opartych~o Raspberry Pi Pico}\label{lst:recive-message}
+\end{lstfloat}
 
 \subsubsection{TTGO T3 LoRa32}
 W wyniku pracy nad systemem zostało przygotowane jedno urządzenie oparte o~TTGO LoRa32.
@@ -145,7 +192,47 @@ W programie zostały wykorzystane biblioteki:
 \end{itemize}
 Urządzenie wysyła wiadomości zawierające odczyty z~czujnika co 5~minut.
 Wiadomości zawierają wartości losowe, wygenerowane za pomocą sprzętowego generatora liczb pseudolosowych, zintegrowanego z~mikrokontrolerem ESP32.
-Wysyłanie wiadomości odbywa się w~sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w~tym czasie.
+Wysyłanie wiadomości odbywa się w~sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w~tym czasie. Na listingu~\ref{lst:node_loop} przedstawiono główną pętlę programu.
+
+\begin{lstfloat}[h!]
+    % \begin{lstfloat}[b!]
+    \lstset{language=C++}
+    % \lstset{}
+    \begin{lstlisting}[frame=single]
+void loop()
+{
+
+    unsigned long currentMillis;
+
+    currentMillis = millis();
+    if (currentMillis - measurmentMillis >= intervalMeasurment)
+    {
+        measurmentMillis = currentMillis;
+        send_packet();
+    }
+
+    if (currentMillis - oledMillis >= intervalOled)
+    {
+        oledMillis = currentMillis;
+        loraDataToOled();
+    }
+
+    if (isPacketToResend and (currentMillis - resendMillis >= 
+            intervalResend))
+    {
+        resend_message();
+        isPacketToResend = false;
+        resendMillis = currentMillis;
+    }
+    if (isPacketAvailable)
+    {
+        handle_message();
+        isPacketAvailable = false;
+    }
+}   
+\end{lstlisting}
+    \caption{Główna pętla programu węzła sieci opartego o~ESP32}\label{lst:node_loop}
+\end{lstfloat}
 
 \subsubsection{Implementacja stacji przekaźnikowej}
 W wyniku pracy nad systemem zostało przygotowane jedno urządzenie oparte o~płytkę TTGO LoRa32.
@@ -162,7 +249,27 @@ W programie zostały wykorzystane biblioteki:
 Urządzenie odbiera wiadomości LoRa i~przesyła je do brokera wiadomości za pomocą protokołu MQTT.
 Wysyłanie wiadomości odbywa się w~sposób asynchroniczny, dzięki czemu urządzenie może wykonywać inne operacje w~tym czasie.
 Urządzenie wyświetla na ekranie OLED informacje o~stanie sieci LoRa oraz otrzymanych wiadomościach.
-Urządzenie nie sprawdza poprawności wiadomości, by zapewnić jak największą wydajność i~niezawodność.
+Urządzenie nie sprawdza poprawności wiadomości, by zapewnić jak największą wydajność i~niezawodność. Na listingu~\ref{lst:callback} przedstawiono funkcję wywoływaną w~reakcji na przerwanie pochodzące~z modułu LoRa.
+
+\begin{lstfloat}[h!]
+    % \begin{lstfloat}[b!]
+    \lstset{language=C++}
+    % \lstset{}
+    \begin{lstlisting}[frame=single]
+void cbk(int packetSize)
+{
+    packet = "";
+    packSize = String(packetSize, DEC);
+    for (int i = 0; i < packetSize; i++)
+    {
+        packet += (char)LoRa.read();
+    }
+    rssi = String(LoRa.packetRssi(), DEC);
+    loraData();
+}
+\end{lstlisting}
+    \caption{Funkcja wywoływana w reakcji na przerwanie pochodzące~z modułu LoRa, z~stacji przekaźnikowej opartej o~ESP32}\label{lst:callback}
+\end{lstfloat}
 
 \subsubsection{Implementacja brokera wiadomości}\label{impl:mosquitto}
 Aby zapewnić niezawodność i~wysoką wydajność komunikacji zdecydowano użyć otwartoźródłowego brokera wiadomości Mosquitto~\cite{tool:mosquitto}.
@@ -186,3 +293,19 @@ Program został napisany z~wykorzystaniem bibliotek:
 
 Ostania wymieniona biblioteka została użyta do połączenia się z~bazą danych Redis, w~celu przechowywania identyfikatorów wiadomości, które zostały już sprawdzone.
 Dzięki temu program nie zapisuje powtórzonych wiadomości do bazy danych.
+Na listingu~\ref{lst:mess-recv} przedstawiono metodę obsługującą przychodzące wiadomości i zapisuje je do bazy danych i Redis.
+
+\begin{lstfloat}[h!]
+    % \begin{lstfloat}[b!]
+    \lstset{language=Python}
+    % \lstset{}
+    \begin{lstlisting}[frame=single]
+def process_message(self, msg):
+    json_msg = parse_json_message(msg)
+    if json_msg and  self.valide_message(json_msg) and \
+    not self.check_if_processed(json_msg["m_id"]):
+        self.save_to_redis(json_msg)
+        self.save_to_influxdb(json_msg)
+\end{lstlisting}
+    \caption{Metoda obsługująca przychodzące wiadomości w programie zapisującym do bazy danach}\label{lst:mess-recv}
+\end{lstfloat}
