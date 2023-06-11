@@ -276,7 +276,7 @@ Aby zapewnić niezawodność i~wysoką wydajność komunikacji zdecydowano uży�
 Jest to sprawdzony, wydajny i~niezawodny program, który jest szeroko stosowany w systemach IoT, również w~zastosowaniach profesjonalnych~\cite{tool:mosquitto}.
 
 \subsubsection{Baza danych}\label{impl:db}
-W celu zapisywania danych zdecydowano użyć bazy danych InfluxDB 2.0~\cite{tool:influxdb}. Jest to baza danych szeregów czasowych, która jest wydajna i niezawodna~\cite{tool:influxdb}.
+W celu zapisywania danych zdecydowano użyć bazy danych InfluxDB 2~\cite{tool:influxdb}. Jest to baza danych szeregów czasowych, która jest wydajna i niezawodna~\cite{tool:influxdb}.
 
 \subsubsection{Redis}\label{impl:redis}
 W celu przechowywania identyfikatorów wiadomości, które zostały już sprawdzone, zdecydowano użyć bazy danych Redis.
@@ -293,7 +293,7 @@ Program został napisany z~wykorzystaniem bibliotek:
 
 Ostania wymieniona biblioteka została użyta do połączenia się z~bazą danych Redis, w~celu przechowywania identyfikatorów wiadomości, które zostały już sprawdzone.
 Dzięki temu program nie zapisuje powtórzonych wiadomości do bazy danych.
-Na listingu~\ref{lst:mess-recv} przedstawiono metodę obsługującą przychodzące wiadomości i zapisuje je do bazy danych i Redis.
+Na listingu~\ref{lst:mess-recv} przedstawiono metodę obsługującą przychodzące wiadomości i zapisuje je do bazy danych i do Redisa.
 
 \begin{lstfloat}[h!]
     % \begin{lstfloat}[b!]

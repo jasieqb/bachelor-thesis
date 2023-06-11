@@ -8,7 +8,7 @@ Został opracowany przez firmę Semtech w 2013 roku, stał się wtedy otwartym s
 LoRa wykorzystuje zastrzeżoną technologię modulacji widma rozproszonego, która umożliwia daleki zasięg, przy ograniczonym zużyciu energii.
 Implementuje on warstwę fizyczną sieci~\cite{lora:about}.
 
-Teoretyczny zasięg sieci LoRa wynosi około 15 km w otwartym terenie i 2—5 km w terenie zurbanizowanym~\cite{bib:lora-performance}.
+Teoretyczny zasięg sieci LoRa wynosi około 15 km w otwartym terenie i 2 — 5~km w~terenie zurbanizowanym~\cite{bib:lora-performance}.
 W praktyce zasięg ten jest ograniczony przez wiele czynników, takich jak:
 \begin{itemize}
     \item moc nadajnika,
@@ -26,7 +26,7 @@ Technologia LoRa pozwala również na dostosowywanie parametrów transmisji, tak
     \item szerokość pasma,
     \item spreading factor \emph{(SF)} (ang. \emph{współczynnik rozprzestrzeniania}).
 \end{itemize}
-Więcej na temat wydajności sieci można przeczytać w~artykule~\cite{bib:lora-performance}.
+Więcej na temat wydajności technologii LoRa można przeczytać w~artykule~\cite{bib:lora-performance}.
 
 \section{Urządzenia wykorzystywane w~projekcie}
 
@@ -37,7 +37,7 @@ ESP32 to jednoukładowy mikrokontroler, zaprojektowany i~produkowany przez firm�
 Jego najważniejsze cechy to~\cite{ESP32:datasheet}:
 \begin{itemize}
     \item energooszczędny procesor RISC o częstotliwości do 240 MHz,
-    \item 520 kB pamięci SRAM,
+    \item 520 KB pamięci SRAM,
     \item WiFi 802.11 b/g/n,
     \item Bluetooth,
     \item liczne interfejsy cyfrowe i analogowe (takie jak: UART, I2C, SPI, I2S, CAN, ADC, DAC, PWM, USB 2.0).
@@ -76,7 +76,7 @@ Pierwsza z płytek została wykorzystana jako przekaźnik danych pomiędzy sieci
 \subsection{Raspberry Pi Pico}
 
 Raspberry Pi Pico to płytka z mikrokontrolerem RP2040, zaprojektowana i~produkowany przez firmę Raspberry Pi Foundation.
-Charakteryzuje się ona dwurdzeniowym procesorem ARM Cortex-M0+ o~częstotliwości 133 MHz, 264 kB pamięci SRAM oraz 2 MB pamięci flash.
+Charakteryzuje się ona dwurdzeniowym procesorem ARM Cortex-M0+ o~częstotliwości 133 MHz, 264 KB pamięci SRAM oraz 2 MB pamięci flash.
 Płytka posiada również wiele interfejsów cyfrowych i~analogowych (takich jak: UART, I2C, SPI, I2S, ADC, DAC, PWM, USB 1.1)~\cite{PICO:datasheet}.
 % \begin{itemize}
 %     \item UART
@@ -88,7 +88,7 @@ Płytka posiada również wiele interfejsów cyfrowych i~analogowych (takich jak
 %     \item PWM
 %     \item USB 1.1
 % \end{itemize}~\cite{PICO:datasheet,PICO:doc}
-Jest ona często wykorzystywana zarówno przez hobbystów do różnych projektów IoT, a~także jako sterownik silników, czy kontroler robotów, jak i jest szeroko używana w przemyśle~\cite{PICO:doc}. Na rysunku~\ref{fig:pico-pinout} przedstawiono schemat wyprowadzeń płytki Raspberry Pi Pico.
+Jest ona często wykorzystywana zarówno przez hobbystów do różnych projektów IoT, jako sterownik silników, czy kontroler robotów, jak i jest szeroko używana w przemyśle~\cite{PICO:doc}. Na rysunku~\ref{fig:pico-pinout} przedstawiono schemat wyprowadzeń płytki Raspberry Pi Pico.
 
 %  PROJECTS
 W projekcie dwie płytki zostały wykorzystane jako część systemu zbierania danych.
